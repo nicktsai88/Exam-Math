@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數學會考衝刺</title>
+    <!-- 加入可愛圓潤的英文字型 Nunito 與黑體/明體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Import Map for Firebase -->
+    <script type="importmap">
+      {
+        "imports": {
+          "firebase/app": "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js",
+          "firebase/firestore": "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js",
+          "firebase/auth": "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"
+        }
+      }
+    </script>
+
+    <style>
+        :root {
+            --text-main: #4e342e;
+            --card-bg: #ffffff;
+        }
+
+        /* 可愛粉彩圓點背景 */
+        body {
+            font-family: 'Nunito', 'Noto Sans TC', sans-serif;
+            background-color: #fff9f9;
+            background-image: 
+                radial-gradient(#ffc0cb 3px, transparent 3px), 
+                radial-gradient(#a2d5f2 3px, transparent 3px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: var(--text-main);
+        }
+
+        h1, h2, .font-serif { font-family: 'Noto Serif TC', serif; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 1400px;
+            position: relative;
+        }
+
+        /* 超可愛立體標題 - 稍微放大 */
+        .header h1 {
+            color: #ff6b81;
+            font-size: 4.5em; 
+            font-weight: 900; 
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 4px 4px 0px #ffffff, 8px 8px 0px #ffeaa7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* 專為 iPad Pro 最佳化的網格: 強制橫向3排 */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 40px;
+            width: 100%;
+            max-width: 1400px; /* 放寬最大寬度 */
+            margin-bottom: 50px;
+        }
+        @media (min-width: 800px) {
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .app-grid {
+                grid-template-columns: repeat(3, 1fr); /* iPad Pro橫式3欄 */
+            }
+        }
+
+        /* 圓潤泡泡風格的卡片 - 大幅放大 */
+        .app-card {
+            background: var(--card-bg);
+            border-radius: 40px;
+            padding: 35px 30px 25px 30px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            min-height: 420px;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .app-card.completed {
+            transform: scale(1.02);
+        }
+
+        .card-icon-wrapper {
+            font-size: 4em;
+            margin-bottom: 20px;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid #fff;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 1.6em;
+            font-weight: 900;
+            margin-bottom: 18px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            border: 2px solid #fff;
+        }
+        .status-loading { background-color: #fdd835; box-shadow: 0 0 8px #fdd835; }
+        .status-success { background-color: #4caf50; box-shadow: 0 0 8px #4caf50; }
+        .status-error { background-color: #ef5350; box-shadow: 0 0 8px #ef5350; }
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { transform: scale(1.05); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .animate-bounce-in { animation: bounceIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        /* 可愛分類大標題 */
+        .section-divider-container {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 50px 0 40px 0;
+            position: relative;
+        }
+        
+        .section-divider {
+            background: #fff;
+            padding: 15px 50px;
+            border-radius: 60px;
+            border: 5px solid #ffeaa7;
+            box-shadow: 0 8px 0 #ffeaa7;
+            color: #d35400;
+            font-size: 2.5em;
+            font-weight: 900;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-divider-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(90deg, #ffeaa7, #ffeaa7 15px, transparent 15px, transparent 30px);
+            z-index: 1;
+        }
+
+        .quick-user-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 3px solid #ffb8b8;
+            color: #d63031;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.3em;
+            transition: all 0.2s;
+            box-shadow: 0 4px 0 #ffb8b8;
+        }
+        .quick-user-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #ffb8b8;
+            background: #fff0f0;
+        }
+        
+        /* 隱藏預設捲軸，讓介面更乾淨 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff9f9; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffc0cb; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff9a9e; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import { initializeApp } from "firebase/app";
+        import { getFirestore, doc, setDoc, updateDoc, onSnapshot, arrayUnion } from "firebase/firestore";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "firebase/auth";
+
+        // ==========================================
+        // 1. Firebase Config
+        // ==========================================
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAxQFt76ZPXE7d0i1XeNZ1yiiD2WYNIfHs",
+            authDomain: "chinese-learning-47f4d.firebaseapp.com",
+            projectId: "chinese-learning-47f4d",
+            storageBucket: "chinese-learning-47f4d.firebasestorage.app",
+            messagingSenderId: "76289812052",
+            appId: "1:76289812052:web:898384a916f9f341f62fc1"
+        };
+
+        const COLLECTION_NAME = 'Exam-Math'; // 更新為數學科
+        const DOC_GLOBAL = 'global';
+
+        let app, db, auth;
+
+        try {
+            if (firebaseConfig.apiKey) {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+            }
+        } catch (e) {
+            console.error("Firebase init failed:", e);
+        }
+
+        // ==========================================
+        // 2. Data Structure (22 Categories for Math)
+        // ==========================================
+        const generateRawData = () => {
+            return [
+                {
+                    title: "主題一：數與方程式",
+                    icon: "🧮",
+                    items: [
+                        { id: 1, code: "Exam-Math-1", title: "單元1：數與數線", color: "#2ed573", lightColor: "#e8f5e9", icon: "📏", href: "Exam-Math-1.html", contents: ["➊ 正負數、數線與絕對值", "➋ 數的四則運算與數線上兩點間的距離", "➌ 指數記法、指數律與科學記號"] },
+                        { id: 2, code: "Exam-Math-2", title: "單元2：標準分解式與分數運算", color: "#1e90ff", lightColor: "#e1f5fe", icon: "🍕", href: "Exam-Math-2.html", contents: ["➊ 因數、倍數與質因數分解", "➋ 最大公因數與最小公倍數", "➌ 分數的四則運算"] },
+                        { id: 3, code: "Exam-Math-3", title: "單元3：一元一次方程式", color: "#ffa502", lightColor: "#fff3e0", icon: "✖️", href: "Exam-Math-3.html", contents: ["➊ 文字符號的列式與運算", "➋ 解一元一次方程式與應用問題"] },
+                        { id: 4, code: "Exam-Math-4", title: "單元4：二元一次聯立方程式", color: "#ff4757", lightColor: "#ffebee", icon: "🔗", href: "Exam-Math-4.html", contents: ["➊ 二元一次方程式", "➋ 解二元一次聯立方程式與應用問題"] },
+                        { id: 5, code: "Exam-Math-5", title: "單元5：直角坐標與二元一次方程式的圖形", color: "#9b59b6", lightColor: "#f3e5f5", icon: "🗺️", href: "Exam-Math-5.html", contents: ["➊ 直角坐標平面", "➋ 二元一次方程式的圖形"] }
+                    ]
+                },
+                {
+                    title: "主題二：比例與不等式",
+                    icon: "⚖️",
+                    items: [
+                        { id: 6, code: "Exam-Math-6", title: "單元6：比例", color: "#1abc9c", lightColor: "#e0f2f1", icon: "🍰", href: "Exam-Math-6.html", contents: ["➊ 比與比例式", "➋ 正比與反比"] },
+                        { id: 7, code: "Exam-Math-7", title: "單元7：一元一次不等式", color: "#f1c40f", lightColor: "#fffde7", icon: "⚖️", href: "Exam-Math-7.html", contents: ["➊ 一元一次不等式", "➋ 解一元一次不等式與應用問題"] },
+                        { id: 8, code: "Exam-Math-8", title: "單元8：線對稱與三視圖", color: "#576574", lightColor: "#e8eaf6", icon: "🦋", href: "Exam-Math-8.html", contents: ["➊ 簡單圖形與垂直、平分", "➋ 線對稱與三視圖"] },
+                        { id: 9, code: "Exam-Math-9", title: "單元9：統計圖表與資料分析", color: "#e84393", lightColor: "#fce4ec", icon: "📊", href: "Exam-Math-9.html", contents: ["➊ 統計圖表", "➋ 平均數、中位數與眾數"] }
+                    ]
+                },
+                {
+                    title: "主題三：二次運算與函數",
+                    icon: "📈",
+                    items: [
+                        { id: 10, code: "Exam-Math-10", title: "單元10：乘法公式與多項式", color: "#00cec9", lightColor: "#e0f7fa", icon: "🧩", href: "Exam-Math-10.html", contents: ["➊ 乘法公式", "➋ 多項式與其四則運算"] },
+                        { id: 11, code: "Exam-Math-11", title: "單元11：平方根與畢氏定理", color: "#e67e22", lightColor: "#fff8e1", icon: "📐", href: "Exam-Math-11.html", contents: ["➊ 平方根與近似值", "➋ 根式的運算", "➌ 畢氏定理"] },
+                        { id: 12, code: "Exam-Math-12", title: "單元12：因式分解與一元二次方程式", color: "#7bed9f", lightColor: "#f1f8e9", icon: "🔑", href: "Exam-Math-12.html", contents: ["➊ 因式分解", "➋ 因式分解法解一元二次方程式", "➌ 配方法與公式解", "➍ 應用問題"] },
+                        { id: 13, code: "Exam-Math-13", title: "單元13：數列與級數", color: "#8e44ad", lightColor: "#ede7f6", icon: "📶", href: "Exam-Math-13.html", contents: ["➊ 等差數列", "➋ 等差級數", "➌ 等比數列"] },
+                        { id: 14, code: "Exam-Math-14", title: "單元14：線型函數", color: "#0984e3", lightColor: "#e3f2fd", icon: "📉", href: "Exam-Math-14.html", contents: ["➊ 認識函數", "➋ 線型函數與函數圖形"] }
+                    ]
+                },
+                {
+                    title: "主題四：平面圖形與幾何",
+                    icon: "📐",
+                    items: [
+                        { id: 15, code: "Exam-Math-15", title: "單元15：三角形的基本性質", color: "#d63031", lightColor: "#ffebef", icon: "🔺", href: "Exam-Math-15.html", contents: ["➊ 角與尺規作圖", "➋ 三角形、多邊形的內角與外角", "➌ 三角形的全等性質與應用", "➍ 三角形的邊角關係"] },
+                        { id: 16, code: "Exam-Math-16", title: "單元16：平行與四邊形", color: "#00b894", lightColor: "#e8f8f5", icon: "🛤️", href: "Exam-Math-16.html", contents: ["➊ 平行線與截角性質", "➋ 平行四邊形", "➌ 特殊四邊形與梯形"] },
+                        { id: 17, code: "Exam-Math-17", title: "單元17：連比與相似形", color: "#fdcb6e", lightColor: "#fef9e7", icon: "🔍", href: "Exam-Math-17.html", contents: ["➊ 連比與連比例式", "➋ 比例線段", "➌ 相似多邊形", "➍ 相似三角形的應用"] },
+                        { id: 18, code: "Exam-Math-18", title: "單元18：圓形", color: "#e17055", lightColor: "#fdf1ec", icon: "⭕", href: "Exam-Math-18.html", contents: ["➊ 圓、圓弧長與扇形", "➋ 點、直線與圓的位置關係", "➌ 圓心角、圓周角與弧的關係"] }
+                    ]
+                },
+                {
+                    title: "主題五：進階幾何與機率",
+                    icon: "🎲",
+                    items: [
+                        { id: 19, code: "Exam-Math-19", title: "單元19：推理證明與三角形的心", color: "#6c5ce7", lightColor: "#f1f2f6", icon: "💡", href: "Exam-Math-19.html", contents: ["➊ 推理證明", "➋ 三角形的外心", "➌ 三角形的內心", "➍ 三角形的重心", "➎ 特殊三角形的三心"] },
+                        { id: 20, code: "Exam-Math-20", title: "單元20：二次函數", color: "#00b894", lightColor: "#e8f8f5", icon: "🎢", href: "Exam-Math-20.html", contents: ["➊ 二次函數的圖形", "➋ 二次函數的最大值或最小值"] },
+                        { id: 21, code: "Exam-Math-21", title: "單元21：統計與機率", color: "#e84393", lightColor: "#fce4ec", icon: "🎲", href: "Exam-Math-21.html", contents: ["➊ 四分位數與盒狀圖", "➋ 機率"] },
+                        { id: 22, code: "Exam-Math-22", title: "單元22：立體圖形", color: "#f39c12", lightColor: "#fcf3cf", icon: "🧊", href: "Exam-Math-22.html", contents: ["➊ 空間中的線與平面", "➋ 角柱與圓柱", "➌ 角錐與圓錐"] }
+                    ]
+                }
+            ];
+        };
+
+        const RAW_DATA = generateRawData();
+        const TOTAL_ITEMS = RAW_DATA.reduce((acc, sec) => acc + sec.items.length, 0) * 5; 
+
+        // 輔助函式：確保取出的進度格式為長度 5 的陣列
+        const getProgressArray = (progressData) => {
+            if (Array.isArray(progressData)) return progressData;
+            if (progressData === true) {
+                const today = new Date().toISOString().split('T')[0];
+                return [today, null, null, null, null];
+            }
+            return [null, null, null, null, null];
+        };
+
+        // ==========================================
+        // 3. React Components
+        // ==========================================
+
+        const { useState, useEffect, useMemo } = React;
+
+        const StatusLight = ({ status }) => {
+            let dotClass = 'status-loading';
+            let text = '☁️ 連線中...';
+
+            if (status === 'success') {
+                dotClass = 'status-success';
+                text = '✅ 已同步雲端';
+            } else if (status === 'error') {
+                dotClass = 'status-error';
+                text = '❌ 同步失敗';
+            } else if (status === 'loading') {
+                dotClass = 'status-loading';
+                text = '⏳ 讀取資料中...';
+            } else {
+                dotClass = ''; 
+                text = '📱 本機離線模式';
+            }
+
+            return (
+                <div className="flex items-center text-xl font-black text-gray-600 bg-white px-8 py-3 rounded-full border-4 border-[#dfe6e9] shadow-[0_4px_0_#dfe6e9]">
+                    <span className={`status-dot ${dotClass}`}></span>
+                    {text}
+                </div>
+            );
+        };
+
+        const App = () => {
+            // UI States
+            const [currentUser, setCurrentUser] = useState(null); 
+            const [allUsers, setAllUsers] = useState([]);
+            const [localProgress, setLocalProgress] = useState({}); 
+            const [loginName, setLoginName] = useState("");
+            const [showLogin, setShowLogin] = useState(false);
+            
+            // 複習日曆 Modal States
+            const [reviewModal, setReviewModal] = useState(null);
+
+            // System States
+            const [isAuthReady, setIsAuthReady] = useState(false);
+            const [syncStatus, setSyncStatus] = useState("loading"); 
+
+            // 計算所有完成的複習次數總和
+            const completedCount = useMemo(() => {
+                let count = 0;
+                Object.values(localProgress).forEach(progressData => {
+                    const arr = getProgressArray(progressData);
+                    count += arr.filter(date => date !== null).length;
+                });
+                return count;
+            }, [localProgress]);
+
+            // 1. Init Auth
+            useEffect(() => {
+                if (!firebaseConfig.apiKey) {
+                    setSyncStatus("offline");
+                    const saved = localStorage.getItem('Exam-Math'); 
+                    if (saved) setLocalProgress(JSON.parse(saved));
+                    return;
+                }
+
+                const unsubscribeAuth = onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        setIsAuthReady(true);
+                    } else {
+                        try {
+                            // 安全地檢查是否有自定義 token
+                            const hasCustomToken = typeof __initial_auth_token !== 'undefined' && __initial_auth_token !== null;
+                            
+                            if (hasCustomToken) {
+                                await signInWithCustomToken(auth, __initial_auth_token);
+                            } else {
+                                await signInAnonymously(auth);
+                            }
+                        } catch (e) {
+                            console.error("Login failed", e);
+                            // 如果自定義 token 失敗，嘗試後備匿名登入
+                            signInAnonymously(auth).catch(err => console.error("Anon fallback failed", err));
+                        }
+                    }
+                });
+
+                return () => unsubscribeAuth();
+            }, []);
+
+            // 2. Fetch Users
+            useEffect(() => {
+                if (!isAuthReady || !db) return;
+
+                setSyncStatus("loading");
+                const unsubGlobal = onSnapshot(doc(db, COLLECTION_NAME, DOC_GLOBAL), (docSnap) => {
+                    if (docSnap.exists()) {
+                        setAllUsers(docSnap.data().users || []);
+                    } else {
+                        setDoc(doc(db, COLLECTION_NAME, DOC_GLOBAL), { users: [] }, { merge: true });
+                        setAllUsers([]);
+                    }
+                    if (!currentUser) setSyncStatus("success");
+                }, (error) => {
+                    console.error("Fetch users error:", error);
+                    setSyncStatus("error");
+                });
+
+                return () => unsubGlobal();
+            }, [isAuthReady, currentUser]);
+
+            // 3. Fetch User Progress
+            useEffect(() => {
+                if (!currentUser || !isAuthReady || !db) return;
+
+                setSyncStatus('loading');
+                const unsubUser = onSnapshot(doc(db, COLLECTION_NAME, currentUser), (docSnap) => {
+                    if (docSnap.exists()) {
+                        setLocalProgress(docSnap.data().progress || {});
+                    } else {
+                        setLocalProgress({});
+                    }
+                    setSyncStatus('success');
+                }, (err) => {
+                    console.error("Sync progress error:", err);
+                    setSyncStatus('error');
+                });
+
+                return () => unsubUser();
+            }, [currentUser, isAuthReady]);
+
+            const handleLogin = async (name) => {
+                if (!name.trim()) return;
+                const uname = name.trim();
+                
+                if (isAuthReady && db) {
+                    if (!allUsers.includes(uname)) {
+                        try {
+                            await updateDoc(doc(db, COLLECTION_NAME, DOC_GLOBAL), {
+                                users: arrayUnion(uname)
+                            });
+                        } catch (e) {
+                            await setDoc(doc(db, COLLECTION_NAME, DOC_GLOBAL), {
+                                users: arrayUnion(uname)
+                            }, { merge: true });
+                        }
+                    }
+                }
+                
+                setCurrentUser(uname);
+                setShowLogin(false);
+                setLoginName("");
+            };
+
+            const saveReviewProgress = async (code, index, dateStr) => {
+                const currentArr = [...getProgressArray(localProgress[code])];
+                currentArr[index] = dateStr;
+                
+                const newProgress = { ...localProgress, [code]: currentArr };
+                setLocalProgress(newProgress);
+
+                if (currentUser && isAuthReady && db) {
+                    try {
+                        setSyncStatus('loading');
+                        await setDoc(doc(db, COLLECTION_NAME, currentUser), {
+                            progress: newProgress,
+                            lastUpdated: new Date()
+                        }, { merge: true });
+                        setSyncStatus('success');
+                    } catch (e) {
+                        console.error("Save failed:", e);
+                        setSyncStatus('error');
+                    }
+                } else {
+                    localStorage.setItem('Exam-Math', JSON.stringify(newProgress)); 
+                }
+                setReviewModal(null); 
+            };
+
+            const openReviewModal = (e, item, index) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const currentArr = getProgressArray(localProgress[item.code]);
+                const existingDate = currentArr[index] || new Date().toISOString().split('T')[0]; 
+                
+                setReviewModal({
+                    itemCode: item.code,
+                    itemTitle: item.title,
+                    color: item.color,
+                    index: index,
+                    date: existingDate,
+                    isExisting: !!currentArr[index]
+                });
+            };
+
+            return (
+                <div className="max-w-[1400px] mx-auto relative px-4">
+                    
+                    {/* Header */}
+                    <div className="header mx-auto mt-8">
+                        <h1 className="animate-bounce-in">🎒 數學會考衝刺 🔢</h1>
+                        <div className="flex flex-col items-center gap-6">
+                            <p className="bg-white px-8 py-3 rounded-full border-4 border-[#ffeaa7] font-black text-[#d35400] text-2xl shadow-sm inline-block">
+                                ✏️ 國中數學・主題式素養探索 📚
+                            </p>
+                            
+                            {/* 快速登入區塊 */}
+                            {!currentUser && allUsers.length > 0 && (
+                                <div className="w-full max-w-3xl my-3 p-6 bg-white/70 backdrop-blur-md rounded-3xl border-4 border-pink-200 shadow-sm animate-bounce-in">
+                                    <p className="text-center text-[#ff6b81] mb-5 font-black text-xl">
+                                        👇 點擊你的名字快速登入 👇
+                                    </p>
+                                    <div className="flex flex-wrap justify-center gap-4">
+                                        {allUsers.map(u => (
+                                            <button 
+                                                key={u} 
+                                                onClick={() => handleLogin(u)} 
+                                                className="quick-user-btn"
+                                            >
+                                                👧👦 {u}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* ---------------- 橫向按鈕區塊 ---------------- */}
+                            <div className="flex flex-row flex-wrap items-center justify-center gap-5 mt-6 w-full animate-bounce-in">
+                                
+                                {/* 總複習進度 */}
+                                <div className="text-xl font-black text-white bg-gradient-to-r from-[#ff9a9e] to-[#fecfef] px-8 py-4 rounded-full border-4 border-white shadow-[0_6px_0_#ffb8b8] flex items-center gap-3">
+                                    🏆 總複習進度：{completedCount} / {TOTAL_ITEMS}
+                                </div>
+                                
+                                {/* 連線狀態燈號 */}
+                                <StatusLight status={syncStatus} />
+
+                                {/* 登入按鈕 / 使用者狀態 */}
+                                {currentUser ? (
+                                    <div className="flex items-center gap-4 bg-white px-8 py-4 rounded-full border-4 border-[#55efc4] shadow-[0_4px_0_#00b894]">
+                                        <span className="text-xl text-gray-500 font-bold">🚀 挑戰者：</span>
+                                        <span className="font-black text-3xl text-[#00b894]">{currentUser}</span>
+                                        <button 
+                                            onClick={() => { setCurrentUser(null); setLocalProgress({}); }}
+                                            className="bg-gray-100 hover:bg-gray-200 text-gray-600 px-5 py-2 rounded-full font-black text-lg transition ml-3"
+                                        >
+                                            登出 👋
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <button 
+                                        onClick={() => setShowLogin(true)}
+                                        className="text-xl font-black text-[#0984e3] bg-white border-4 border-[#74b9ff] px-8 py-4 rounded-full hover:bg-[#e3f2fd] transition shadow-[0_6px_0_#74b9ff] hover:translate-y-1 hover:shadow-[0_2px_0_#74b9ff] flex items-center gap-3"
+                                    >
+                                        👑 點我登入 / 紀錄進度
+                                    </button>
+                                )}
+
+                                {/* 返回按鈕 */}
+                                <a 
+                                    href="https://nicktsai88.github.io/List/" 
+                                    className="text-xl font-black text-[#c0392b] bg-gradient-to-r from-[#ff9a9e] to-[#fecfef] px-8 py-4 rounded-full border-4 border-white shadow-[0_6px_0_#ffb8b8] transition-all hover:translate-y-1 hover:shadow-[0_2px_0_#ffb8b8] flex items-center gap-3 no-underline"
+                                >
+                                    🎁 返回快樂學習百寶箱
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Login Modal */}
+                    {showLogin && (
+                        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 backdrop-blur-sm" onClick={() => setShowLogin(false)}>
+                            <div className="bg-white p-8 rounded-[40px] shadow-2xl w-full max-w-md mx-4 animate-bounce-in flex flex-col items-center border-4 border-[#ffb8b8]" onClick={e => e.stopPropagation()}>
+                                <div className="text-6xl mb-4">👋</div>
+                                <h3 className="text-3xl font-black text-center mb-6 text-[#ff6b81]">建立新挑戰者</h3>
+                                <div className="flex flex-col gap-5 w-full">
+                                    <input 
+                                        type="text" 
+                                        value={loginName}
+                                        onChange={(e) => setLoginName(e.target.value)}
+                                        placeholder="輸入你的名字..." 
+                                        className="w-full border-4 border-gray-200 rounded-3xl px-5 py-4 text-2xl font-bold focus:outline-none focus:border-[#ff9a9e] text-center transition"
+                                        onKeyDown={(e) => e.key === 'Enter' && handleLogin(loginName)}
+                                    />
+                                    <button 
+                                        onClick={() => handleLogin(loginName)}
+                                        className="w-full bg-[#ff9a9e] text-white py-4 rounded-3xl font-black text-2xl shadow-[0_8px_0_#ff7675] hover:translate-y-1 hover:shadow-[0_4px_0_#ff7675] transition"
+                                    >
+                                        出發！🚀
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* 日曆複習 Modal */}
+                    {reviewModal && (
+                        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 backdrop-blur-sm" onClick={() => setReviewModal(null)}>
+                            <div className="bg-white p-8 rounded-[40px] shadow-2xl w-full max-w-md mx-4 animate-bounce-in flex flex-col items-center border-4" style={{borderColor: reviewModal.color}} onClick={e => e.stopPropagation()}>
+                                <div className="text-5xl mb-3">📅</div>
+                                <h3 className="text-2xl font-black text-gray-800 mb-3 text-center leading-tight">{reviewModal.itemTitle}</h3>
+                                <p className="text-xl font-bold mb-8" style={{color: reviewModal.color}}>第 {reviewModal.index + 1} 次複習紀錄 ✨</p>
+                                
+                                <input 
+                                    type="date" 
+                                    value={reviewModal.date}
+                                    onChange={(e) => setReviewModal({...reviewModal, date: e.target.value})}
+                                    className="w-full border-4 rounded-2xl px-5 py-4 text-xl font-bold text-gray-700 focus:outline-none transition"
+                                    style={{ borderColor: '#f1f2f6' }}
+                                />
+                                
+                                <div className="flex flex-col gap-4 w-full mt-8">
+                                    <button 
+                                        onClick={() => saveReviewProgress(reviewModal.itemCode, reviewModal.index, reviewModal.date)}
+                                        className="w-full text-white py-4 rounded-3xl font-black text-2xl transition hover:brightness-110"
+                                        style={{ 
+                                            backgroundColor: reviewModal.color,
+                                            boxShadow: `0 8px 0 ${reviewModal.color}99`
+                                        }}
+                                        onMouseDown={(e) => { e.currentTarget.style.transform = 'translateY(4px)'; e.currentTarget.style.boxShadow = `0 4px 0 ${reviewModal.color}99`; }}
+                                        onMouseUp={(e) => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = `0 8px 0 ${reviewModal.color}99`; }}
+                                    >
+                                        儲存 💖
+                                    </button>
+                                    
+                                    {reviewModal.isExisting && (
+                                        <button 
+                                            onClick={() => saveReviewProgress(reviewModal.itemCode, reviewModal.index, null)}
+                                            className="w-full bg-white text-red-500 border-4 border-red-100 py-4 rounded-3xl font-black text-xl hover:bg-red-50 transition mt-2"
+                                        >
+                                            清除紀錄 🗑️
+                                        </button>
+                                    )}
+
+                                    <button 
+                                        onClick={() => setReviewModal(null)}
+                                        className="w-full text-gray-400 py-3 rounded-3xl font-bold text-lg hover:bg-gray-100 transition mt-2"
+                                    >
+                                        取消返回
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Content Grid */}
+                    <div className="pb-20 mt-10">
+                        {RAW_DATA.map((section, idx) => (
+                            <div key={idx} className="mb-20">
+                                <div className="section-divider-container">
+                                    <div className="section-divider-line"></div>
+                                    <div className="section-divider">
+                                        {section.icon} {section.title} {section.icon}
+                                    </div>
+                                </div>
+                                
+                                <div className="app-grid">
+                                    {section.items.map((item) => {
+                                        const progressArr = getProgressArray(localProgress[item.code]);
+                                        const completedReviews = progressArr.filter(date => date !== null).length;
+                                        const isAllDone = completedReviews === 5;
+
+                                        return (
+                                            <a 
+                                                key={item.code}
+                                                href={item.href}
+                                                target="_blank"
+                                                className={`app-card group`}
+                                                style={{
+                                                    border: `5px solid ${isAllDone ? item.color : '#fff'}`, 
+                                                    boxShadow: isAllDone ? `0 10px 0 ${item.color}, 0 0 35px ${item.color}66` : `0 10px 0 ${item.lightColor}`,
+                                                    transform: isAllDone ? 'scale(1.02)' : 'none'
+                                                }}
+                                            >
+                                                <div 
+                                                    className="card-icon-wrapper"
+                                                    style={{ 
+                                                        color: item.color, 
+                                                        backgroundColor: item.lightColor,
+                                                        borderColor: isAllDone ? item.color : '#fff'
+                                                    }}
+                                                >
+                                                    {item.icon}
+                                                </div>
+                                                
+                                                <div className="card-title" style={{ color: item.color }}>
+                                                    {item.title} {isAllDone && "🏆"}
+                                                </div>
+                                                
+                                                {/* 學習內容：上下排列清單 - 加大字體 */}
+                                                <div 
+                                                    className="w-full mt-3 mb-6 text-left flex-grow font-bold text-gray-600 bg-gray-50 rounded-3xl p-5 border-4 border-dashed"
+                                                    style={{ borderColor: item.lightColor }}
+                                                >
+                                                    <ul className="flex flex-col gap-3">
+                                                        {item.contents.map((txt, i) => (
+                                                            <li key={i} className="flex items-start gap-3 text-lg leading-snug">
+                                                                <span style={{color: item.color, fontSize: '1.2em', lineHeight: '1.2'}}>✨</span>
+                                                                <span>{txt}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                                
+                                                {/* 5次複習區塊 - 加大 */}
+                                                <div className="w-full mt-auto">
+                                                    <div className="text-lg font-black mb-4 flex items-center justify-center gap-2" style={{color: item.color}}>
+                                                        🔥 複習進度 ({completedReviews}/5)
+                                                    </div>
+                                                    <div className="flex justify-between w-full gap-3">
+                                                        {[0, 1, 2, 3, 4].map(revIdx => {
+                                                            const dateVal = progressArr[revIdx];
+                                                            const isChecked = !!dateVal;
+                                                            // 格式化顯示 (若有日期則顯示 月/日，否則顯示數字)
+                                                            const displayTxt = isChecked ? dateVal.substring(5).replace('-', '/') : (revIdx + 1);
+
+                                                            return (
+                                                                <div 
+                                                                    key={revIdx}
+                                                                    onClick={(e) => openReviewModal(e, item, revIdx)}
+                                                                    className={`flex-1 py-3 rounded-2xl flex items-center justify-center text-base font-black cursor-pointer transition-all hover:-translate-y-1`}
+                                                                    style={{ 
+                                                                        backgroundColor: isChecked ? item.color : '#fff',
+                                                                        color: isChecked ? 'white' : '#b2bec3',
+                                                                        border: `3px solid ${isChecked ? item.color : '#dfe6e9'}`,
+                                                                        boxShadow: isChecked ? `0 5px 0 ${item.color}88` : `0 5px 0 #dfe6e9`
+                                                                    }}
+                                                                    title={isChecked ? `完成於: ${dateVal}` : `第 ${revIdx + 1} 次複習`}
+                                                                >
+                                                                    {displayTxt}
+                                                                </div>
+                                                            )
+                                                        })}
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
