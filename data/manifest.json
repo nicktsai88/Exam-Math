@@ -1,6 +1,6 @@
 {
   "title": "圓的解法實驗室｜114 上國三第二次段考",
-  "version": "2026.11.07-r2",
+  "version": "2026.11.07-r3",
   "generatedAt": "2026-11-07",
   "scope": "國中三年級上學期第二次段考・圓單元",
   "questionCount": 204,
@@ -36,7 +36,9 @@
     "separateDiagramScreenImages": 24,
     "separateDiagramPrintImages": 24,
     "sourcePageScreenImages": 42,
-    "sourcePagePrintImages": 42
+    "sourcePagePrintImages": 42,
+    "dedicatedLessonRecords": 204,
+    "interactiveSvgDiagrams": 204
   },
   "progressStorage": "localStorage",
   "cloudSync": false

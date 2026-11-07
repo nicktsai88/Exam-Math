@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.07-r2",
+  "version": "2026.11.07-r3",
   "total": 204,
   "classificationRule": "依主要解題策略分類；複合題歸入最能啟動解題的第一關鍵觀念。",
   "sortOrder": "解法分類 → 學校 → 原始題號",
@@ -20,6 +20,8 @@
     "allAnswersPresent": true,
     "duplicateIds": 0,
     "continuousNewQuestionNumbers": true,
-    "sourceTracePresent": true
+    "sourceTracePresent": true,
+    "dedicatedLessonPresent": true,
+    "interactiveDiagramPresent": true
   }
 }

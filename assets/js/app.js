@@ -2,6 +2,8 @@
   "use strict";
 
   const { BANK_VERSION, TOPICS, QUESTION_BANK, SCHOOL_FILES } = window.CIRCLE_BANK;
+  const LESSONS = window.CIRCLE_LESSONS;
+  const DIAGRAMS = window.CIRCLE_DIAGRAMS;
   const STORAGE_PREFIX = `circle-method-lab:${BANK_VERSION}:`;
   const state = {
     mode: localStorage.getItem(`${STORAGE_PREFIX}mode`) || "analysis",
@@ -137,27 +139,10 @@
     });
   }
 
-  const SOLUTION_METHODS = {
-    position: {tip:"把圖上的最短距離與半徑放在同一條比較線上；等號就是相切或落在圓上的分界。",formula:"d<r：內部／相交；d=r：圓上／相切；d>r：外部／相離",moves:["在原圖標出圓心、半徑與最近距離 d。","把題目的範圍條件改寫成 d 與 r 的不等式。","檢查端點是否包含等號，再讀出答案。"]},
-    chord: {tip:"圓心向弦作垂線後，弦會被平分；先用半弦建立直角三角形。",formula:"r²＝弦心距²＋(弦長÷2)²",moves:["在本題原圖由圓心向目標弦作垂線。","把整條弦平均分成兩段，標出半弦。","在形成的直角三角形套用畢氏定理並還原整弦。"]},
-    tangent: {tip:"看到切點先補上半徑與 90°；同一圓外點引出的兩段切線等長。",formula:"OT ⟂ PT；同一外點 P：PA＝PB",moves:["圈出本題切點，連接圓心與切點。","補上直角記號，或把同一外點的兩切線標成等長。","用畢氏定理、全等或周長拆線完成計算。"]},
-    arc: {tip:"角度題先找『角的兩邊真正截到哪一段弧』，再決定乘 2 或除以 2。",formula:"圓心角＝所對弧；圓周角＝所對弧÷2",moves:["沿角的兩邊找到圓周上的兩個弧端點。","在原圖標出所對弧，辨認是圓心角或圓周角。","用弧角倍數關係推回題目所求角度。"]},
-    cyclic: {tip:"先判斷交點在圓上、圓內或圓外；位置不同，使用的角弧關係也不同。",formula:"內接四邊形對角和 180°；圓內交角＝兩弧和÷2；圓外交角＝兩弧差÷2",moves:["在原圖確認角頂點的位置。","標出角所對的兩段弧或內接四邊形的對角。","依位置使用互補、半和或半差，最後檢查角度範圍。"]},
-    power: {tip:"先固定共同交點，再把每條線上的成對線段寫成乘積；外部割線要用全段。",formula:"圓內：PA·PB＝PC·PD；圓外：外段·全段＝另一外段·全段；切線²＝外段·全段",moves:["在本題原圖圈出兩線共同交點。","逐線標出內段、外段與全段，避免乘錯。","列乘積相等式，化簡並排除不合線段長的值。"]},
-    measure: {tip:"先算圓心角占 360° 的比例，再決定乘圓周或圓面積；弓形要再減三角形。",formula:"弧長＝θ/360°·2πr；扇形面積＝θ/360°·πr²",moves:["在原圖標出半徑 r 與圓心角 θ。","把 θ 寫成整圓 360° 的比例。","依題意計算弧長、扇形、弓形或圓環，並保留正確單位。"]},
-    coordinate: {tip:"坐標只是把幾何長度換成水平差與鉛直差；相切時再加入半徑垂直切線。",formula:"PQ＝√[(x₂−x₁)²＋(y₂−y₁)²]",moves:["把原圖中的圓心與已知點寫成坐標差。","用距離公式或中點／中垂線定位。","加入半徑、相切或直徑條件，解出未知坐標或長度。"]},
-    construction: {tip:"作圖不是猜位置，而是把『到兩點等距』或『切點半徑垂直』轉成軌跡。",formula:"弦的中垂線必過圓心；切點半徑必垂直切線",moves:["辨認題目要找圓心、切點或切線。","依原圖作中垂線、垂線或以直徑作輔助圓。","用交點性質驗證作圖結果符合題意。"]},
-    composite: {tip:"先拆成已學過的小圖形；每完成一個局部關係，就把結果標回原圖再進下一步。",formula:"依原圖依序串接：弦／切線／弧角／面積關係",moves:["把原圖分成可辨認的圓、直角三角形與多邊形。","先處理能直接套用的局部關係，將結果回填圖上。","串接剩餘條件完成計算，並用答案的角度或長度範圍反查。"]}
-  };
-
   function solutionFor(q) {
-    const method=SOLUTION_METHODS[q.topic];
-    const answerLine=q.kind==="choice"?`推導結果與原卷選項 ${q.answer} 相符。`:`化簡後得到 ${q.answer}。`;
-    return {
-      tip:`${method.tip} 本題只依「${q.school}・${q.label}」原圖上的標示推導。`,
-      visualSteps:method.moves.map((move,index)=>`${index+1}. ${move}`),
-      derivation:[method.moves[0],method.formula,method.moves[2],answerLine]
-    };
+    const lesson=LESSONS[q.id];
+    if(!lesson) throw new Error(`Missing dedicated lesson: ${q.id}`);
+    return {...lesson,visualSteps:lesson.steps};
   }
 
   function createMeta(q) {
@@ -193,14 +178,12 @@
     const section = document.createElement("section"); section.className = "intuition-pane";
     const head = document.createElement("div"); head.className = "pane-head";
     const h3 = document.createElement("h3"); h3.textContent = "幾何直觀・視覺化解題";
-    const badge = document.createElement("span"); badge.className = "model-badge"; badge.textContent = "本題原圖・專屬步驟";
+    const badge = document.createElement("span"); badge.className = "model-badge"; badge.textContent = "本題重繪・專屬步驟";
     head.append(h3,badge);
     const body = document.createElement("div"); body.className = "intuition-body";
-    const visual = document.createElement("div"); visual.className = "geometry-visual source-visual"; visual.dataset.step = "0";
-    const visualImg=document.createElement("img");visualImg.src=q.screenImage;visualImg.alt=`${q.school}${q.label}專屬視覺解題原圖`;visualImg.loading="lazy";
-    const stepBadge=document.createElement("span");stepBadge.className="visual-step-badge";stepBadge.textContent="讀原圖";
-    visual.append(visualImg,stepBadge);
-    if(q.auxImages?.length){const strip=document.createElement("div");strip.className="visual-aux-strip";q.auxImages.forEach(aux=>{const image=document.createElement("img");image.src=aux.screen;image.alt="本題分離附圖";image.loading="lazy";strip.append(image);});visual.append(strip);}
+    const visual = document.createElement("div"); visual.className = "geometry-visual teaching-visual"; visual.dataset.step = "0";
+    const stepBadge=document.createElement("span");stepBadge.className="visual-step-badge";stepBadge.textContent="讀題重繪";
+    visual.innerHTML=DIAGRAMS.render(q,solution);visual.append(stepBadge);
     const copy = document.createElement("div");
     const lead = document.createElement("p"); lead.className = "intuition-lead"; lead.textContent = solution.tip;
     const list = document.createElement("ol"); list.className = "visual-steps";
@@ -270,7 +253,7 @@
 
   function playIntuition(button) {
     const card=button.closest(".question-card");const visual=card.querySelector(".geometry-visual");const list=[...card.querySelectorAll(".visual-steps li")];
-    let step=Number(visual.dataset.step||0)+1;if(step>3)step=0;visual.dataset.step=String(step);visual.classList.toggle("active",step>0);visual.querySelector(".visual-step-badge").textContent=step===0?"讀原圖":`步驟 ${step}`;list.forEach((li,i)=>li.classList.toggle("active",i<step));button.textContent=step===0?"▶ 逐步播放直觀":step===3?"↻ 重新播放":"下一步 →";
+    let step=Number(visual.dataset.step||0)+1;if(step>3)step=0;visual.dataset.step=String(step);visual.classList.toggle("active",step>0);visual.querySelector(".visual-step-badge").textContent=step===0?"讀題重繪":`步驟 ${step}`;visual.querySelectorAll("[data-diagram-step]").forEach(layer=>layer.classList.toggle("shown",Number(layer.dataset.diagramStep)<=step));list.forEach((li,i)=>li.classList.toggle("active",i<step));button.textContent=step===0?"▶ 逐步播放直觀":step===3?"↻ 重新播放":"下一步 →";
   }
 
   function openModal(id,auxIndex=null) {

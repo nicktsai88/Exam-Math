@@ -1,4 +1,4 @@
-const BANK_VERSION = "2026.11.07-r2";
+const BANK_VERSION = "2026.11.07-r3";
 
 const TOPICS = {
   position: {
