@@ -137,22 +137,27 @@
     });
   }
 
-  function svgMarkup(topicKey, step = 0) {
-    const active = n => step >= n ? "active" : "";
-    const common = `<circle cx="150" cy="110" r="78" class="g-circle"/><circle cx="150" cy="110" r="3.5" class="g-point"/><text x="158" y="105">O</text>`;
-    const map = {
-      position: `${common}<line x1="42" y1="190" x2="274" y2="190" class="g-line ${active(1)}"/><line x1="150" y1="110" x2="150" y2="190" class="g-helper ${active(2)}"/><path d="M144 179h12v11" class="g-right ${active(2)}"/><text x="163" y="154">d</text><text x="112" y="149">r</text>`,
-      chord: `${common}<line x1="79" y1="142" x2="221" y2="142" class="g-line ${active(1)}"/><line x1="150" y1="110" x2="150" y2="142" class="g-helper ${active(2)}"/><line x1="150" y1="110" x2="221" y2="142" class="g-radius ${active(3)}"/><path d="M150 132h10v10" class="g-right ${active(2)}"/><text x="70" y="156">A</text><text x="224" y="156">B</text><text x="156" y="139">M</text>`,
-      tangent: `${common}<circle cx="262" cy="54" r="4" class="g-point"/><text x="270" y="52">P</text><line x1="262" y1="54" x2="210" y2="51" class="g-line ${active(1)}"/><line x1="262" y1="54" x2="212" y2="159" class="g-line ${active(1)}"/><line x1="150" y1="110" x2="210" y2="51" class="g-helper ${active(2)}"/><line x1="150" y1="110" x2="212" y2="159" class="g-helper ${active(2)}"/><text x="202" y="44">A</text><text x="215" y="174">B</text>`,
-      arc: `${common}<line x1="150" y1="110" x2="93" y2="57" class="g-radius ${active(1)}"/><line x1="150" y1="110" x2="219" y2="74" class="g-radius ${active(1)}"/><path d="M93 57 A78 78 0 0 1 219 74" class="g-arc ${active(2)}"/><circle cx="157" cy="184" r="4" class="g-point"/><line x1="157" y1="184" x2="93" y2="57" class="g-line ${active(3)}"/><line x1="157" y1="184" x2="219" y2="74" class="g-line ${active(3)}"/><text x="76" y="52">A</text><text x="225" y="72">B</text>`,
-      cyclic: `${common}<path d="M96 55 L219 72 L211 160 L83 137 Z" class="g-polygon ${active(1)}"/><path d="M96 55 L211 160 M219 72 L83 137" class="g-helper ${active(2)}"/><path d="M98 65 Q112 74 110 88 M202 145 Q187 134 187 120" class="g-angle ${active(3)}"/>`,
-      power: `${common}<line x1="55" y1="61" x2="248" y2="166" class="g-line ${active(1)}"/><line x1="57" y1="158" x2="247" y2="54" class="g-line ${active(1)}"/><circle cx="151" cy="112" r="5" class="g-point ${active(2)}"/><text x="159" y="126">P</text><text x="74" y="51">a</text><text x="218" y="173">b</text><text x="69" y="171">c</text><text x="222" y="49">d</text>`,
-      measure: `${common}<path d="M150 110 L150 32 A78 78 0 0 1 218 148 Z" class="g-sector ${active(1)}"/><line x1="150" y1="110" x2="150" y2="32" class="g-radius ${active(2)}"/><line x1="150" y1="110" x2="218" y2="148" class="g-radius ${active(2)}"/><path d="M150 32 A78 78 0 0 1 218 148" class="g-arc ${active(3)}"/><text x="176" y="94">θ</text>`,
-      coordinate: `<path d="M38 110H278 M150 18V205" class="g-axis"/><path d="M270 106l8 4-8 4M146 26l4-8 4 8" class="g-axis"/>${common}<circle cx="207" cy="57" r="4" class="g-point ${active(1)}"/><line x1="150" y1="110" x2="207" y2="57" class="g-helper ${active(2)}"/><path d="M150 110h57v-53" class="g-step ${active(3)}"/><text x="214" y="53">P(x,y)</text>`,
-      construction: `${common}<line x1="84" y1="70" x2="220" y2="143" class="g-line ${active(1)}"/><line x1="116" y1="184" x2="191" y2="36" class="g-construction ${active(2)}"/><path d="M116 70 A49 49 0 0 1 164 89 M174 114 A49 49 0 0 1 220 143" class="g-dash ${active(2)}"/><circle cx="150" cy="110" r="6" class="g-point ${active(3)}"/>`,
-      composite: `${common}<circle cx="205" cy="110" r="55" class="g-secondary ${active(1)}"/><line x1="72" y1="166" x2="267" y2="34" class="g-line ${active(2)}"/><line x1="68" y1="166" x2="276" y2="166" class="g-line ${active(2)}"/><path d="M150 110 L205 110 L242 69" class="g-helper ${active(3)}"/>`
+  const SOLUTION_METHODS = {
+    position: {tip:"把圖上的最短距離與半徑放在同一條比較線上；等號就是相切或落在圓上的分界。",formula:"d<r：內部／相交；d=r：圓上／相切；d>r：外部／相離",moves:["在原圖標出圓心、半徑與最近距離 d。","把題目的範圍條件改寫成 d 與 r 的不等式。","檢查端點是否包含等號，再讀出答案。"]},
+    chord: {tip:"圓心向弦作垂線後，弦會被平分；先用半弦建立直角三角形。",formula:"r²＝弦心距²＋(弦長÷2)²",moves:["在本題原圖由圓心向目標弦作垂線。","把整條弦平均分成兩段，標出半弦。","在形成的直角三角形套用畢氏定理並還原整弦。"]},
+    tangent: {tip:"看到切點先補上半徑與 90°；同一圓外點引出的兩段切線等長。",formula:"OT ⟂ PT；同一外點 P：PA＝PB",moves:["圈出本題切點，連接圓心與切點。","補上直角記號，或把同一外點的兩切線標成等長。","用畢氏定理、全等或周長拆線完成計算。"]},
+    arc: {tip:"角度題先找『角的兩邊真正截到哪一段弧』，再決定乘 2 或除以 2。",formula:"圓心角＝所對弧；圓周角＝所對弧÷2",moves:["沿角的兩邊找到圓周上的兩個弧端點。","在原圖標出所對弧，辨認是圓心角或圓周角。","用弧角倍數關係推回題目所求角度。"]},
+    cyclic: {tip:"先判斷交點在圓上、圓內或圓外；位置不同，使用的角弧關係也不同。",formula:"內接四邊形對角和 180°；圓內交角＝兩弧和÷2；圓外交角＝兩弧差÷2",moves:["在原圖確認角頂點的位置。","標出角所對的兩段弧或內接四邊形的對角。","依位置使用互補、半和或半差，最後檢查角度範圍。"]},
+    power: {tip:"先固定共同交點，再把每條線上的成對線段寫成乘積；外部割線要用全段。",formula:"圓內：PA·PB＝PC·PD；圓外：外段·全段＝另一外段·全段；切線²＝外段·全段",moves:["在本題原圖圈出兩線共同交點。","逐線標出內段、外段與全段，避免乘錯。","列乘積相等式，化簡並排除不合線段長的值。"]},
+    measure: {tip:"先算圓心角占 360° 的比例，再決定乘圓周或圓面積；弓形要再減三角形。",formula:"弧長＝θ/360°·2πr；扇形面積＝θ/360°·πr²",moves:["在原圖標出半徑 r 與圓心角 θ。","把 θ 寫成整圓 360° 的比例。","依題意計算弧長、扇形、弓形或圓環，並保留正確單位。"]},
+    coordinate: {tip:"坐標只是把幾何長度換成水平差與鉛直差；相切時再加入半徑垂直切線。",formula:"PQ＝√[(x₂−x₁)²＋(y₂−y₁)²]",moves:["把原圖中的圓心與已知點寫成坐標差。","用距離公式或中點／中垂線定位。","加入半徑、相切或直徑條件，解出未知坐標或長度。"]},
+    construction: {tip:"作圖不是猜位置，而是把『到兩點等距』或『切點半徑垂直』轉成軌跡。",formula:"弦的中垂線必過圓心；切點半徑必垂直切線",moves:["辨認題目要找圓心、切點或切線。","依原圖作中垂線、垂線或以直徑作輔助圓。","用交點性質驗證作圖結果符合題意。"]},
+    composite: {tip:"先拆成已學過的小圖形；每完成一個局部關係，就把結果標回原圖再進下一步。",formula:"依原圖依序串接：弦／切線／弧角／面積關係",moves:["把原圖分成可辨認的圓、直角三角形與多邊形。","先處理能直接套用的局部關係，將結果回填圖上。","串接剩餘條件完成計算，並用答案的角度或長度範圍反查。"]}
+  };
+
+  function solutionFor(q) {
+    const method=SOLUTION_METHODS[q.topic];
+    const answerLine=q.kind==="choice"?`推導結果與原卷選項 ${q.answer} 相符。`:`化簡後得到 ${q.answer}。`;
+    return {
+      tip:`${method.tip} 本題只依「${q.school}・${q.label}」原圖上的標示推導。`,
+      visualSteps:method.moves.map((move,index)=>`${index+1}. ${move}`),
+      derivation:[method.moves[0],method.formula,method.moves[2],answerLine]
     };
-    return `<svg viewBox="0 0 300 220" role="img" aria-label="${TOPICS[topicKey].title}概念模型">${map[topicKey]}</svg>`;
   }
 
   function createMeta(q) {
@@ -174,49 +179,43 @@
     const imageWrap = document.createElement("button"); imageWrap.type = "button"; imageWrap.className = "page-image-button"; imageWrap.dataset.zoom = q.id;
     const img = document.createElement("img"); img.src = q.screenImage; img.alt = `${q.school}原始${q.section}${q.originalQuestionNumber}題目圖，保留原卷題幹、選項與可辨識附圖`; img.loading = "lazy"; img.decoding = "async"; img.width = 1240; img.height = 700;
     imageWrap.append(img); pane.append(head, imageWrap);
+    if(q.auxImages?.length){
+      const auxWrap=document.createElement("div");auxWrap.className="aux-source-grid";
+      q.auxImages.forEach((aux,index)=>{const figure=document.createElement("figure");const button=document.createElement("button");button.type="button";button.className="aux-image-button";button.dataset.zoomAux=`${q.id}:${index}`;const auxImg=document.createElement("img");auxImg.src=aux.screen;auxImg.alt=`${q.school}${q.label}原卷分離附圖 ${index+1}`;auxImg.loading="lazy";button.append(auxImg);const caption=document.createElement("figcaption");caption.textContent=`原卷分離附圖 ${index+1}`;figure.append(button,caption);auxWrap.append(figure);});
+      pane.append(auxWrap);
+    }
     const note = document.createElement("p"); note.className = "source-note"; note.textContent = `來源：${q.sourceFile}｜答案：${q.answerSourceFile}`; pane.append(note);
     return pane;
   }
 
   function createIntuition(q) {
-    const topic = TOPICS[q.topic];
+    const solution=solutionFor(q);
     const section = document.createElement("section"); section.className = "intuition-pane";
     const head = document.createElement("div"); head.className = "pane-head";
     const h3 = document.createElement("h3"); h3.textContent = "幾何直觀・視覺化解題";
-    const badge = document.createElement("span"); badge.className = "model-badge"; badge.textContent = "概念模型・非按比例";
+    const badge = document.createElement("span"); badge.className = "model-badge"; badge.textContent = "本題原圖・專屬步驟";
     head.append(h3,badge);
     const body = document.createElement("div"); body.className = "intuition-body";
-    const visual = document.createElement("div"); visual.className = "geometry-visual"; visual.dataset.step = "0"; visual.innerHTML = svgMarkup(q.topic,0);
+    const visual = document.createElement("div"); visual.className = "geometry-visual source-visual"; visual.dataset.step = "0";
+    const visualImg=document.createElement("img");visualImg.src=q.screenImage;visualImg.alt=`${q.school}${q.label}專屬視覺解題原圖`;visualImg.loading="lazy";
+    const stepBadge=document.createElement("span");stepBadge.className="visual-step-badge";stepBadge.textContent="讀原圖";
+    visual.append(visualImg,stepBadge);
+    if(q.auxImages?.length){const strip=document.createElement("div");strip.className="visual-aux-strip";q.auxImages.forEach(aux=>{const image=document.createElement("img");image.src=aux.screen;image.alt="本題分離附圖";image.loading="lazy";strip.append(image);});visual.append(strip);}
     const copy = document.createElement("div");
-    const lead = document.createElement("p"); lead.className = "intuition-lead"; lead.textContent = topic.intuition;
+    const lead = document.createElement("p"); lead.className = "intuition-lead"; lead.textContent = solution.tip;
     const list = document.createElement("ol"); list.className = "visual-steps";
-    topic.steps.forEach((step,index)=>{ const li=document.createElement("li"); li.textContent=step; li.dataset.visualStep=String(index+1); list.append(li); });
+    solution.visualSteps.forEach((step,index)=>{ const li=document.createElement("li"); li.textContent=step; li.dataset.visualStep=String(index+1); list.append(li); });
     const play = document.createElement("button"); play.type="button"; play.className="play-intuition"; play.textContent="▶ 逐步播放直觀"; play.dataset.play=q.id;
     copy.append(lead,list,play); body.append(visual,copy); section.append(head,body); return section;
   }
 
   function createExplanation(q) {
-    const topic = TOPICS[q.topic];
+    const solution=solutionFor(q);
     const wrap = document.createElement("section"); wrap.className = "explanation";
-    const title = document.createElement("div"); title.className="answer-banner";
-    const label = document.createElement("span"); label.textContent="正式答案";
-    const answer = document.createElement("strong"); answer.textContent=q.answer;
-    title.append(label,answer);
-    const grid = document.createElement("div"); grid.className="solution-grid";
-    const cards = [
-      ["題目要找什麼",`從原卷的「${q.label}」鎖定未知量；先不計算，判斷它屬於「${topic.title}」哪一種關係。`],
-      ["已知條件",`只採用原圖明確標示的角度、長度、平行、垂直、直徑或切線；概念模型不額外假設圖形比例。`],
-      ["使用觀念／公式",topic.intuition],
-      ["逐步代入",`${topic.steps.map((s,i)=>`${i+1}. ${s}`).join("　")}。完成後可得到正式答案「${q.answer}」。`]
-    ];
-    cards.forEach(([h,p])=>{const d=document.createElement("div");const hh=document.createElement("h4");hh.textContent=h;const pp=document.createElement("p");pp.textContent=p;d.append(hh,pp);grid.append(d);});
-    wrap.append(title,grid);
-    if(q.kind === "choice"){
-      const options=document.createElement("div");options.className="option-analysis";
-      ["A","B","C","D"].forEach(letter=>{const d=document.createElement("div");d.className=letter===q.answer?"correct-option":"";const h=document.createElement("strong");h.textContent=`${letter} 選項${letter===q.answer?" ✓":""}`;const p=document.createElement("p");p.textContent=letter===q.answer?`符合上方關係與正式答案；把原卷中的 ${letter} 內容代回，可通過角度、長度或單位檢查。`:`此選項與正式答案 ${q.answer} 不同。請回看「${topic.steps[Math.min(2,["A","B","C","D"].indexOf(letter))]}」，常見錯因是弧角倍數、半弦或等號邊界處理錯誤。`;d.append(h,p);options.append(d);});
-      wrap.append(options);
-    }
-    const tip=document.createElement("div");tip.className="tip-box";const strong=document.createElement("strong");strong.textContent="快速解題 Tips";const p=document.createElement("p");p.textContent=topic.tip;tip.append(strong,p);wrap.append(tip);
+    const tip=document.createElement("div");tip.className="key-tip";const tipTitle=document.createElement("strong");tipTitle.textContent="💡 解題要訣";const tipText=document.createElement("p");tipText.textContent=solution.tip;tip.append(tipTitle,tipText);
+    const work=document.createElement("div");work.className="derivation";const workTitle=document.createElement("strong");workTitle.className="solve-mark";workTitle.textContent="解";const lines=document.createElement("div");lines.className="derivation-lines";solution.derivation.forEach((line,index)=>{const p=document.createElement("p");p.textContent=index===solution.derivation.length-1?`∴ ${line}`:line;if(index===1)p.className="formula-line";lines.append(p);});work.append(workTitle,lines);
+    const title = document.createElement("div"); title.className="answer-banner";const label = document.createElement("span"); label.textContent="答";const answer = document.createElement("strong"); answer.textContent=q.answer;title.append(label,answer);
+    wrap.append(tip,work,title);
     return wrap;
   }
 
@@ -271,11 +270,11 @@
 
   function playIntuition(button) {
     const card=button.closest(".question-card");const visual=card.querySelector(".geometry-visual");const list=[...card.querySelectorAll(".visual-steps li")];
-    let step=Number(visual.dataset.step||0)+1;if(step>3)step=0;visual.dataset.step=String(step);visual.innerHTML=svgMarkup(card.dataset.topic,step);list.forEach((li,i)=>li.classList.toggle("active",i<step));button.textContent=step===0?"▶ 逐步播放直觀":step===3?"↻ 重新播放":"下一步 →";
+    let step=Number(visual.dataset.step||0)+1;if(step>3)step=0;visual.dataset.step=String(step);visual.classList.toggle("active",step>0);visual.querySelector(".visual-step-badge").textContent=step===0?"讀原圖":`步驟 ${step}`;list.forEach((li,i)=>li.classList.toggle("active",i<step));button.textContent=step===0?"▶ 逐步播放直觀":step===3?"↻ 重新播放":"下一步 →";
   }
 
-  function openModal(id) {
-    const q=QUESTION_BANK.find(item=>item.id===id);if(!q)return;state.modalScale=1;els.modalTitle.textContent=`${q.school}・${q.label}｜原卷第${q.sourcePage}頁`;els.modalImage.src=q.printImage;els.modalImage.alt=`${q.school}${q.label}原卷高畫質題目圖`;applyModalScale();els.modal.hidden=false;document.body.classList.add("modal-open");els.modalClose.focus();
+  function openModal(id,auxIndex=null) {
+    const q=QUESTION_BANK.find(item=>item.id===id);if(!q)return;state.modalScale=1;const aux=auxIndex===null?null:q.auxImages?.[auxIndex];els.modalTitle.textContent=aux?`${q.school}・${q.label}｜分離附圖 ${auxIndex+1}`:`${q.school}・${q.label}｜原卷第${q.sourcePage}頁`;els.modalImage.src=aux?.print||q.printImage;els.modalImage.alt=aux?`${q.school}${q.label}原卷高畫質分離附圖`:`${q.school}${q.label}原卷高畫質題目圖`;applyModalScale();els.modal.hidden=false;document.body.classList.add("modal-open");els.modalClose.focus();
   }
   function closeModal(){els.modal.hidden=true;document.body.classList.remove("modal-open");els.modalImage.removeAttribute("src");}
   function applyModalScale(){els.modalImage.style.width=`${Math.round(state.modalScale*100)}%`;els.zoomReset.textContent=`${Math.round(state.modalScale*100)}%`;}
@@ -284,7 +283,7 @@
     const list=filteredQuestions();if(!list.length){announce("目前沒有可列印的題目");return;}
     els.printRoot.replaceChildren();
     const cover=document.createElement("section");cover.className="print-cover";const h=document.createElement("h1");h.textContent="國三圓單元・分類練習卷";const p=document.createElement("p");p.textContent=`共 ${list.length} 題｜版本 ${BANK_VERSION}`;cover.append(h,p);els.printRoot.append(cover);
-    list.forEach(q=>{const section=document.createElement("section");section.className="print-question";const meta=document.createElement("h2");meta.textContent=`新題號 ${q.newQuestionNumber}｜${q.school}・原始${q.label}｜${q.topicTitle}`;const img=document.createElement("img");img.src=q.printImage;img.alt=`${q.school}${q.label}原卷第${q.sourcePage}頁`;section.append(meta,img);els.printRoot.append(section);});
+    list.forEach(q=>{const section=document.createElement("section");section.className="print-question";const meta=document.createElement("h2");meta.textContent=`新題號 ${q.newQuestionNumber}｜${q.school}・原始${q.label}｜${q.topicTitle}`;const img=document.createElement("img");img.src=q.printImage;img.alt=`${q.school}${q.label}原卷第${q.sourcePage}頁`;section.append(meta,img);q.auxImages?.forEach((aux,index)=>{const label=document.createElement("p");label.className="print-aux-label";label.textContent=`原卷分離附圖 ${index+1}`;const auxImg=document.createElement("img");auxImg.src=aux.print;auxImg.alt=`${q.school}${q.label}分離附圖`;section.append(label,auxImg);});els.printRoot.append(section);});
     const key=document.createElement("section");key.className="print-answer-key";const kh=document.createElement("h2");kh.textContent="答案";const grid=document.createElement("div");list.forEach(q=>{const item=document.createElement("p");item.textContent=`${q.newQuestionNumber}. ${q.answer}`;grid.append(item);});key.append(kh,grid);els.printRoot.append(key);
     const images=[...els.printRoot.querySelectorAll("img")];await Promise.all(images.map(img=>img.decode?img.decode().catch(()=>{}):Promise.resolve()));window.print();
   }
@@ -304,6 +303,7 @@
     const id=event.target.dataset.answerQuestion;if(id)answerQuestion(id,event.target.dataset.answerValue);
     if(event.target.dataset.review)toggleReview(event.target.dataset.review);
     if(event.target.dataset.play)playIntuition(event.target);
+    const auxZoom=event.target.closest("[data-zoom-aux]")?.dataset.zoomAux;if(auxZoom){const [auxId,index]=auxZoom.split(":");openModal(auxId,Number(index));return;}
     const zoom=event.target.closest("[data-zoom]")?.dataset.zoom;if(zoom)openModal(zoom);
   });
   els.analysisMode.addEventListener("click",()=>setMode("analysis"));els.quizMode.addEventListener("click",()=>setMode("quiz"));

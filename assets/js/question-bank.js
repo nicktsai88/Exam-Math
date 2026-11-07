@@ -1,4 +1,4 @@
-const BANK_VERSION = "2026.11.07-r1";
+const BANK_VERSION = "2026.11.07-r2";
 
 const TOPICS = {
   position: {
@@ -194,7 +194,28 @@ addSet("龍華","選擇",[4,5,8,9,10,11,12,13,14,15,16,17,18,19,20],longChoice,{
 const longFill={1:"15<r<17",2:"70π/3",3:"100°",4:"√3/3",5:"52°",6:"65/2"};
 addSet("龍華","填充",[1,2,3],longFill,{1:"position",2:"measure",3:"arc"},()=>4,"constructed");
 
+const AUX_IMAGE_COUNTS = {
+  "minghua-c1":1,"minghua-c2":1,"minghua-c3":1,"minghua-c4":1,
+  "minghua-c5":1,"minghua-c6":1,"minghua-c8":1,
+  "minghua-c11":1,"minghua-c12":1,"minghua-c15":1,
+  "minghua-c16":1,"minghua-c17":1,"minghua-c18":1,
+  "minghua-f2":1,"minghua-f3":1,"minghua-f4":1,
+    "minghua-f5":1,"minghua-f7":1,"minghua-f8":1,
+    "nanzih-f11":1,"nanzih-f12":1,"nanzih-f13":1,
+    "nanzih-f14":1,"nanzih-f15":1
+};
+
 QUESTION_BANK.sort((a,b)=>TOPICS[a.topic].order-TOPICS[b.topic].order || a.school.localeCompare(b.school,"zh-Hant") || a.originalQuestionNumber-b.originalQuestionNumber);
-QUESTION_BANK.forEach((q,index)=>{ q.newQuestionNumber=index+1; q.chapter=TOPICS[q.topic].chapter; q.topicTitle=TOPICS[q.topic].title; });
+QUESTION_BANK.forEach((q,index)=>{
+  q.newQuestionNumber=index+1;
+  q.chapter=TOPICS[q.topic].chapter;
+  q.topicTitle=TOPICS[q.topic].title;
+  const [slug,leaf]=q.id.split("-");
+  const count=AUX_IMAGE_COUNTS[q.id]||0;
+  q.auxImages=Array.from({length:count},(_,i)=>({
+      screen:`assets/images/questions/screen/${slug}/figures/${leaf}-${i+1}.jpg`,
+      print:`assets/images/questions/print/${slug}/figures/${leaf}-${i+1}.jpg`
+  }));
+});
 
 window.CIRCLE_BANK = { BANK_VERSION, TOPICS, QUESTION_BANK, SCHOOL_FILES };
