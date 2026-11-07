@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="十校國三圓單元段考，依解題方法分類的幾何直觀解析與測驗網站。">
+  <title>圓・解法導航｜國三十校段考</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#questionList">跳至題目</a>
+  <header class="topbar" aria-label="主要工具列">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">◉</span><span>圓・解法導航</span></div>
+    <div class="mode-switch" role="group" aria-label="學習模式">
+      <button id="analysisMode" class="active" type="button">📚 解析介面</button>
+      <button id="quizMode" type="button">📝 測驗介面</button>
+    </div>
+    <div class="font-tools" role="group" aria-label="字級調整">
+      <button id="fontDown" type="button" aria-label="縮小字級">A−</button>
+      <button id="fontReset" type="button"><span id="fontPercent">100%</span></button>
+      <button id="fontUp" type="button" aria-label="放大字級">A＋</button>
+    </div>
+    <span id="saveState" class="save-state">● 本機已儲存</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="siteTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">114 學年度上學期・國三第二次段考</p>
+        <h1 id="siteTitle">不是背 200 題，<br><span>而是看懂 10 種圓的解法。</span></h1>
+        <p class="hero-lead">十校正式題目與答案，按「第一步怎麼想」重新分類。每題保留原卷高解析頁面，並附可逐步高亮的幾何直觀模型。</p>
+        <div class="hero-actions">
+          <button class="primary" id="startLearning" type="button">開始依解法練習</button>
+          <button class="secondary" id="printSelected" type="button">📝 列印選取單元（練習卷）</button>
+        </div>
+      </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <svg viewBox="0 0 420 420" role="img">
+          <circle cx="210" cy="210" r="142" class="orbit-main"/>
+          <circle cx="210" cy="210" r="6" class="orbit-dot"/>
+          <path d="M96 126 L330 290" class="orbit-chord"/>
+          <path d="M210 210 L96 126 M210 210 L330 290" class="orbit-radius"/>
+          <path d="M87 337 Q210 248 333 337" class="orbit-arc"/>
+          <line x1="44" y1="350" x2="375" y2="350" class="orbit-tangent"/>
+          <text x="222" y="202">O</text><text x="80" y="120">A</text><text x="338" y="300">B</text>
+        </svg>
+        <div class="orbit-note"><strong>看見關係</strong><span>直角・等長・同弧</span></div>
+      </div>
+    </section>
+
+    <section class="method-map" aria-labelledby="methodTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow">METHOD INDEX</p><h2 id="methodTitle">解法索引</h2></div>
+        <p>選一張卡，直接看所有「第一步相同」的題目。</p>
+      </div>
+      <div id="methodCards" class="method-cards"></div>
+    </section>
+
+    <section class="workspace" aria-label="題庫工作區">
+      <aside class="filters" aria-label="題目篩選">
+        <div class="filter-header"><div><p class="eyebrow">FILTER</p><h2>題目篩選</h2></div><button id="resetFilters" class="text-button" type="button">重設</button></div>
+        <label class="search-label" for="searchInput">搜尋題號、學校、解法</label>
+        <input id="searchInput" type="search" placeholder="例：五福、弦心距、選擇 7">
+
+        <fieldset>
+          <legend>學校</legend>
+          <div class="mini-actions"><button type="button" data-select="schools">全選</button><button type="button" data-clear="schools">清除</button></div>
+          <div id="schoolFilters" class="check-grid"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>解法分類</legend>
+          <div class="mini-actions"><button type="button" data-select="topics">全選</button><button type="button" data-clear="topics">清除</button></div>
+          <div id="topicFilters" class="check-list"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>學習狀態</legend>
+          <label class="check-row"><input id="wrongOnly" type="checkbox">只看錯題</label>
+          <label class="check-row"><input id="reviewOnly" type="checkbox">只看待複習</label>
+        </fieldset>
+
+        <div class="learner-box">
+          <h3>本機學習者</h3>
+          <div class="learner-fields"><select id="learnerEmoji" aria-label="頭像"><option>🦊</option><option>🐳</option><option>🦉</option><option>🐼</option></select><input id="learnerName" maxlength="20" placeholder="輸入暱稱" aria-label="學習者暱稱"><button id="saveLearner" type="button">儲存</button></div>
+          <p id="learnerStatus">訪客模式・資料只存於這台裝置</p>
+        </div>
+      </aside>
+
+      <div class="question-area">
+        <div class="dashboard" aria-live="polite">
+          <div><span>目前題數</span><strong id="filteredCount">0</strong></div>
+          <div><span>已作答</span><strong id="answeredCount">0</strong></div>
+          <div><span>答對</span><strong id="correctCount">0</strong></div>
+          <div><span>待複習</span><strong id="reviewCount">0</strong></div>
+          <div class="progress-wrap"><span>本範圍進度</span><div class="progress-track"><i id="progressBar"></i></div><b id="progressText">0%</b></div>
+        </div>
+
+        <details id="answerIndex" class="answer-index" open>
+          <summary>分類後答案速查（解析介面）</summary>
+          <div id="answerChips"></div>
+        </details>
+
+        <div class="results-head"><div><p class="eyebrow">QUESTION BANK</p><h2 id="resultTitle">依解法排序</h2></div><p id="resultDescription">從圓的位置關係開始，逐步進入綜合題。</p></div>
+        <div id="questionList" class="question-list" tabindex="-1"></div>
+        <button id="loadMore" class="load-more" type="button">載入更多題目</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-panel">
+      <div class="modal-bar"><h2 id="modalTitle">原卷高畫質檢視</h2><div><button id="zoomOut" type="button">−</button><button id="zoomReset" type="button">100%</button><button id="zoomIn" type="button">＋</button><button id="modalClose" type="button">關閉</button></div></div>
+      <div id="modalViewport" class="modal-viewport"><img id="modalImage" alt=""></div>
+    </div>
+  </div>
+
+  <div id="printRoot" aria-hidden="true"></div>
+  <div id="liveRegion" class="sr-only" aria-live="polite"></div>
+
+  <footer><p>資料版本 <span id="versionLabel"></span>・10 校・114 學年度上學期第二次段考</p><p>幾何視覺化為概念模型，非按比例；作答時以原卷標示為準。</p></footer>
+
+  <script src="assets/js/question-bank.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

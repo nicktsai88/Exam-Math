@@ -1,0 +1,2657 @@
+{
+  "total": 204,
+  "items": [
+    {
+      "id": "qixian-c1",
+      "school": "七賢",
+      "label": "選擇1",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        244.8,
+        710.6,
+        332.8
+      ]
+    },
+    {
+      "id": "qixian-c2",
+      "school": "七賢",
+      "label": "選擇2",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        329.8,
+        710.6,
+        436.7
+      ]
+    },
+    {
+      "id": "qixian-c5",
+      "school": "七賢",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        704.3,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "wufu-f1",
+      "school": "五福",
+      "label": "填充1",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        77.9,
+        710.3,
+        297.9
+      ]
+    },
+    {
+      "id": "wufu-f2",
+      "school": "五福",
+      "label": "填充2",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        155.4,
+        710.3,
+        254.8
+      ]
+    },
+    {
+      "id": "wufu-f3",
+      "school": "五福",
+      "label": "填充3",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        251.8,
+        710.3,
+        356.2
+      ]
+    },
+    {
+      "id": "wufu-f5",
+      "school": "五福",
+      "label": "填充5",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        474.8,
+        710.3,
+        636.4
+      ]
+    },
+    {
+      "id": "wufu-f6",
+      "school": "五福",
+      "label": "填充6",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        633.4,
+        710.3,
+        769.7
+      ]
+    },
+    {
+      "id": "wufu-c1",
+      "school": "五福",
+      "label": "選擇1",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        144.2,
+        710.3,
+        250.4
+      ]
+    },
+    {
+      "id": "wufu-c3",
+      "school": "五福",
+      "label": "選擇3",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        317.6,
+        710.3,
+        428.8
+      ]
+    },
+    {
+      "id": "wufu-c5",
+      "school": "五福",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        624.4,
+        710.3,
+        800.8
+      ]
+    },
+    {
+      "id": "wufu-c6",
+      "school": "五福",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        797.8,
+        710.3,
+        987.0
+      ]
+    },
+    {
+      "id": "minghua-c1",
+      "school": "明華",
+      "label": "選擇1",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        300.6,
+        710.5,
+        520.6
+      ]
+    },
+    {
+      "id": "minghua-c2",
+      "school": "明華",
+      "label": "選擇2",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        345.2,
+        710.5,
+        565.2
+      ]
+    },
+    {
+      "id": "minghua-c3",
+      "school": "明華",
+      "label": "選擇3",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        389.8,
+        710.5,
+        609.8
+      ]
+    },
+    {
+      "id": "minghua-c4",
+      "school": "明華",
+      "label": "選擇4",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        434.4,
+        710.5,
+        659.6
+      ]
+    },
+    {
+      "id": "minghua-c5",
+      "school": "明華",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        656.6,
+        710.5,
+        876.6
+      ]
+    },
+    {
+      "id": "minghua-c6",
+      "school": "明華",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        723.6,
+        710.5,
+        943.6
+      ]
+    },
+    {
+      "id": "minghua-c8",
+      "school": "明華",
+      "label": "選擇8",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        855.3,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "minghua-c9",
+      "school": "明華",
+      "label": "選擇9",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        893.7,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "fuhua-c1",
+      "school": "復華",
+      "label": "選擇1",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        136.5,
+        711.0,
+        356.5
+      ]
+    },
+    {
+      "id": "fuhua-c2",
+      "school": "復華",
+      "label": "選擇2",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        210.2,
+        711.0,
+        311.6
+      ]
+    },
+    {
+      "id": "fuhua-c3",
+      "school": "復華",
+      "label": "選擇3",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        308.6,
+        711.0,
+        398.0
+      ]
+    },
+    {
+      "id": "fuhua-c4",
+      "school": "復華",
+      "label": "選擇4",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        395.0,
+        711.0,
+        527.3
+      ]
+    },
+    {
+      "id": "fuhua-c5",
+      "school": "復華",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        524.3,
+        711.0,
+        636.5
+      ]
+    },
+    {
+      "id": "fuhua-c6",
+      "school": "復華",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        633.5,
+        711.0,
+        758.1
+      ]
+    },
+    {
+      "id": "fuhua-c7",
+      "school": "復華",
+      "label": "選擇7",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        755.1,
+        711.0,
+        880.7
+      ]
+    },
+    {
+      "id": "fuhua-c8",
+      "school": "復華",
+      "label": "選擇8",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        877.7,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "yangming-c1",
+      "school": "陽明",
+      "label": "選擇1",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        182.9,
+        711.0,
+        324.8
+      ]
+    },
+    {
+      "id": "yangming-c2",
+      "school": "陽明",
+      "label": "選擇2",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        321.8,
+        711.0,
+        442.9
+      ]
+    },
+    {
+      "id": "yangming-c4",
+      "school": "陽明",
+      "label": "選擇4",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        568.9,
+        711.0,
+        685.7
+      ]
+    },
+    {
+      "id": "yangming-c6",
+      "school": "陽明",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        844.9,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "nanzih-c10",
+      "school": "楠梓",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        38.3,
+        710.5,
+        137.5
+      ]
+    },
+    {
+      "id": "nanzih-f7",
+      "school": "楠梓",
+      "label": "填充7",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        758.4,
+        710.5,
+        978.4
+      ]
+    },
+    {
+      "id": "nanzih-f8",
+      "school": "楠梓",
+      "label": "填充8",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        785.5,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "nanzih-f9",
+      "school": "楠梓",
+      "label": "填充9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        827.9,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "nanzih-f10",
+      "school": "楠梓",
+      "label": "填充10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        890.6,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "fushan-c1",
+      "school": "福山",
+      "label": "選擇1",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        135.1,
+        710.6,
+        303.2
+      ]
+    },
+    {
+      "id": "fushan-c2",
+      "school": "福山",
+      "label": "選擇2",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        300.2,
+        710.6,
+        520.2
+      ]
+    },
+    {
+      "id": "fushan-c3",
+      "school": "福山",
+      "label": "選擇3",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        346.3,
+        710.6,
+        443.3
+      ]
+    },
+    {
+      "id": "fushan-c4",
+      "school": "福山",
+      "label": "選擇4",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        440.3,
+        710.6,
+        564.1
+      ]
+    },
+    {
+      "id": "fushan-c5",
+      "school": "福山",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        561.1,
+        710.6,
+        702.9
+      ]
+    },
+    {
+      "id": "fushan-c6",
+      "school": "福山",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        699.9,
+        710.6,
+        836.6
+      ]
+    },
+    {
+      "id": "fushan-c7",
+      "school": "福山",
+      "label": "選擇7",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        833.6,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "longhua-c19",
+      "school": "龍華",
+      "label": "選擇19",
+      "page": 4,
+      "status": "manual-crop",
+      "box": [
+        18,
+        20,
+        710,
+        285
+      ]
+    },
+    {
+      "id": "longhua-c20",
+      "school": "龍華",
+      "label": "選擇20",
+      "page": 4,
+      "status": "manual-crop",
+      "box": [
+        18,
+        275,
+        710,
+        520
+      ]
+    },
+    {
+      "id": "longhua-f1",
+      "school": "龍華",
+      "label": "填充1",
+      "page": 4,
+      "status": "manual-crop",
+      "box": [
+        18,
+        515,
+        710,
+        700
+      ]
+    },
+    {
+      "id": "longhua-f2",
+      "school": "龍華",
+      "label": "填充2",
+      "page": 4,
+      "status": "manual-crop",
+      "box": [
+        18,
+        690,
+        710,
+        850
+      ]
+    },
+    {
+      "id": "longhua-f3",
+      "school": "龍華",
+      "label": "填充3",
+      "page": 4,
+      "status": "manual-crop",
+      "box": [
+        18,
+        840,
+        710,
+        990
+      ]
+    },
+    {
+      "id": "qixian-n1",
+      "school": "七賢",
+      "label": "非選1",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        329.3,
+        710.6,
+        636.0
+      ]
+    },
+    {
+      "id": "qixian-n2",
+      "school": "七賢",
+      "label": "非選2",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        633.0,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "wufu-f9",
+      "school": "五福",
+      "label": "填充9",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        206.4,
+        710.3,
+        337.5
+      ]
+    },
+    {
+      "id": "wufu-f10",
+      "school": "五福",
+      "label": "填充10",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        334.5,
+        710.3,
+        492.8
+      ]
+    },
+    {
+      "id": "wufu-f11",
+      "school": "五福",
+      "label": "填充11",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        489.8,
+        710.3,
+        651.7
+      ]
+    },
+    {
+      "id": "wufu-f12",
+      "school": "五福",
+      "label": "填充12",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        648.7,
+        710.3,
+        806.9
+      ]
+    },
+    {
+      "id": "zhengxing-f1",
+      "school": "正興",
+      "label": "填充1",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        92,
+        710,
+        235
+      ]
+    },
+    {
+      "id": "zhengxing-f2",
+      "school": "正興",
+      "label": "填充2",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        225,
+        710,
+        360
+      ]
+    },
+    {
+      "id": "zhengxing-f3",
+      "school": "正興",
+      "label": "填充3",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        350,
+        710,
+        485
+      ]
+    },
+    {
+      "id": "zhengxing-f4",
+      "school": "正興",
+      "label": "填充4",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        475,
+        710,
+        610
+      ]
+    },
+    {
+      "id": "zhengxing-f5",
+      "school": "正興",
+      "label": "填充5",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        600,
+        710,
+        730
+      ]
+    },
+    {
+      "id": "zhengxing-f6",
+      "school": "正興",
+      "label": "填充6",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        720,
+        710,
+        850
+      ]
+    },
+    {
+      "id": "zhengxing-f7",
+      "school": "正興",
+      "label": "填充7",
+      "page": 1,
+      "status": "manual-crop",
+      "box": [
+        18,
+        840,
+        710,
+        970
+      ]
+    },
+    {
+      "id": "minzu-c17",
+      "school": "民族",
+      "label": "選擇17",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        123.5,
+        710.6,
+        252.5
+      ]
+    },
+    {
+      "id": "minzu-c18",
+      "school": "民族",
+      "label": "選擇18",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        249.5,
+        710.6,
+        381.0
+      ]
+    },
+    {
+      "id": "minzu-c19",
+      "school": "民族",
+      "label": "選擇19",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        378.0,
+        710.6,
+        502.9
+      ]
+    },
+    {
+      "id": "minzu-c20",
+      "school": "民族",
+      "label": "選擇20",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        499.9,
+        710.6,
+        617.3
+      ]
+    },
+    {
+      "id": "minzu-c21",
+      "school": "民族",
+      "label": "選擇21",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        614.3,
+        710.6,
+        728.5
+      ]
+    },
+    {
+      "id": "minzu-c22",
+      "school": "民族",
+      "label": "選擇22",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        725.5,
+        710.6,
+        832.3
+      ]
+    },
+    {
+      "id": "minzu-c23",
+      "school": "民族",
+      "label": "選擇23",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        829.3,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "fuhua-f5",
+      "school": "復華",
+      "label": "填充5",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        118.0,
+        711.0,
+        219.4
+      ]
+    },
+    {
+      "id": "fuhua-f6",
+      "school": "復華",
+      "label": "填充6",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        216.4,
+        711.0,
+        369.5
+      ]
+    },
+    {
+      "id": "fuhua-f7",
+      "school": "復華",
+      "label": "填充7",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        366.5,
+        711.0,
+        489.8
+      ]
+    },
+    {
+      "id": "fuhua-f8",
+      "school": "復華",
+      "label": "填充8",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        486.8,
+        711.0,
+        574.4
+      ]
+    },
+    {
+      "id": "fuhua-f9",
+      "school": "復華",
+      "label": "填充9",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        571.4,
+        372.5,
+        677.6
+      ]
+    },
+    {
+      "id": "fuhua-f10",
+      "school": "復華",
+      "label": "填充10",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        674.6,
+        711.0,
+        811.2
+      ]
+    },
+    {
+      "id": "fuhua-f11",
+      "school": "復華",
+      "label": "填充11",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        808.2,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "yangming-c7",
+      "school": "陽明",
+      "label": "選擇7",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        44.3,
+        711.0,
+        176.5
+      ]
+    },
+    {
+      "id": "yangming-c9",
+      "school": "陽明",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        320.5,
+        711.0,
+        474.8
+      ]
+    },
+    {
+      "id": "yangming-c10",
+      "school": "陽明",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        471.8,
+        711.0,
+        767.3
+      ]
+    },
+    {
+      "id": "yangming-f1",
+      "school": "陽明",
+      "label": "填充1",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        764.3,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "nanzih-c4",
+      "school": "楠梓",
+      "label": "選擇4",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        420.6,
+        710.5,
+        541.6
+      ]
+    },
+    {
+      "id": "nanzih-c5",
+      "school": "楠梓",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        538.6,
+        710.5,
+        758.6
+      ]
+    },
+    {
+      "id": "nanzih-c6",
+      "school": "楠梓",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        612.7,
+        710.5,
+        832.7
+      ]
+    },
+    {
+      "id": "nanzih-c7",
+      "school": "楠梓",
+      "label": "選擇7",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        684.7,
+        710.5,
+        904.7
+      ]
+    },
+    {
+      "id": "nanzih-c8",
+      "school": "楠梓",
+      "label": "選擇8",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        765.4,
+        710.5,
+        985.4
+      ]
+    },
+    {
+      "id": "nanzih-c9",
+      "school": "楠梓",
+      "label": "選擇9",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        841.8,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "fushan-f3",
+      "school": "福山",
+      "label": "填充3",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        35.6,
+        710.6,
+        180.7
+      ]
+    },
+    {
+      "id": "fushan-f4",
+      "school": "福山",
+      "label": "填充4",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        177.7,
+        710.6,
+        333.8
+      ]
+    },
+    {
+      "id": "fushan-f5",
+      "school": "福山",
+      "label": "填充5",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        330.8,
+        710.6,
+        497.5
+      ]
+    },
+    {
+      "id": "fushan-f6",
+      "school": "福山",
+      "label": "填充6",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        494.5,
+        710.6,
+        659.9
+      ]
+    },
+    {
+      "id": "fushan-f7",
+      "school": "福山",
+      "label": "填充7",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        656.9,
+        710.6,
+        813.3
+      ]
+    },
+    {
+      "id": "fushan-f8",
+      "school": "福山",
+      "label": "填充8",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        810.3,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "fushan-c8",
+      "school": "福山",
+      "label": "選擇8",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        35.3,
+        710.6,
+        202.6
+      ]
+    },
+    {
+      "id": "fushan-c9",
+      "school": "福山",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        199.6,
+        710.6,
+        450.7
+      ]
+    },
+    {
+      "id": "fushan-c10",
+      "school": "福山",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        447.7,
+        710.6,
+        686.1
+      ]
+    },
+    {
+      "id": "fushan-f1",
+      "school": "福山",
+      "label": "填充1",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        683.1,
+        710.6,
+        811.2
+      ]
+    },
+    {
+      "id": "fushan-f2",
+      "school": "福山",
+      "label": "填充2",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        808.2,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "qixian-c7",
+      "school": "七賢",
+      "label": "選擇7",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        198.4,
+        710.6,
+        418.4
+      ]
+    },
+    {
+      "id": "qixian-c8",
+      "school": "七賢",
+      "label": "選擇8",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        245.4,
+        710.6,
+        518.6
+      ]
+    },
+    {
+      "id": "qixian-c9",
+      "school": "七賢",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        515.6,
+        710.6,
+        735.6
+      ]
+    },
+    {
+      "id": "qixian-c10",
+      "school": "七賢",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        583.2,
+        710.6,
+        686.7
+      ]
+    },
+    {
+      "id": "qixian-c11",
+      "school": "七賢",
+      "label": "選擇11",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        683.7,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "wufu-c7",
+      "school": "五福",
+      "label": "選擇7",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        47.5,
+        710.3,
+        176.3
+      ]
+    },
+    {
+      "id": "wufu-c8",
+      "school": "五福",
+      "label": "選擇8",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        173.3,
+        710.3,
+        356.5
+      ]
+    },
+    {
+      "id": "wufu-c9",
+      "school": "五福",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        353.5,
+        710.3,
+        443.2
+      ]
+    },
+    {
+      "id": "wufu-c10",
+      "school": "五福",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        440.2,
+        710.3,
+        573.0
+      ]
+    },
+    {
+      "id": "wufu-c11",
+      "school": "五福",
+      "label": "選擇11",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        570.0,
+        710.3,
+        693.9
+      ]
+    },
+    {
+      "id": "minzu-c24",
+      "school": "民族",
+      "label": "選擇24",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        52.6,
+        710.6,
+        181.8
+      ]
+    },
+    {
+      "id": "minzu-c25",
+      "school": "民族",
+      "label": "選擇25",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        178.8,
+        710.6,
+        315.7
+      ]
+    },
+    {
+      "id": "minzu-n1",
+      "school": "民族",
+      "label": "非選1",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        312.7,
+        710.6,
+        570.4
+      ]
+    },
+    {
+      "id": "minzu-n2",
+      "school": "民族",
+      "label": "非選2",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        567.4,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "minzu-c3",
+      "school": "民族",
+      "label": "選擇3",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        306.3,
+        710.6,
+        406.0
+      ]
+    },
+    {
+      "id": "minzu-c5",
+      "school": "民族",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        548.1,
+        710.6,
+        645.1
+      ]
+    },
+    {
+      "id": "minzu-c6",
+      "school": "民族",
+      "label": "選擇6",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        642.1,
+        710.6,
+        777.0
+      ]
+    },
+    {
+      "id": "minzu-c7",
+      "school": "民族",
+      "label": "選擇7",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        774.0,
+        710.6,
+        863.1
+      ]
+    },
+    {
+      "id": "minzu-c8",
+      "school": "民族",
+      "label": "選擇8",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        860.1,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "minghua-f2",
+      "school": "明華",
+      "label": "填充2",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        248.4,
+        710.5,
+        468.4
+      ]
+    },
+    {
+      "id": "minghua-f3",
+      "school": "明華",
+      "label": "填充3",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        280.1,
+        710.5,
+        500.1
+      ]
+    },
+    {
+      "id": "minghua-f4",
+      "school": "明華",
+      "label": "填充4",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        326.2,
+        710.5,
+        513.0
+      ]
+    },
+    {
+      "id": "minghua-f5",
+      "school": "明華",
+      "label": "填充5",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        510.0,
+        710.5,
+        730.0
+      ]
+    },
+    {
+      "id": "minghua-f7",
+      "school": "明華",
+      "label": "填充7",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        601.1,
+        710.5,
+        821.1
+      ]
+    },
+    {
+      "id": "minghua-f8",
+      "school": "明華",
+      "label": "填充8",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        659.5,
+        710.5,
+        784.6
+      ]
+    },
+    {
+      "id": "minghua-n1",
+      "school": "明華",
+      "label": "非選1",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        781.6,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "minghua-c11",
+      "school": "明華",
+      "label": "選擇11",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        223.0,
+        710.5,
+        443.0
+      ]
+    },
+    {
+      "id": "minghua-c12",
+      "school": "明華",
+      "label": "選擇12",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        283.0,
+        710.5,
+        503.0
+      ]
+    },
+    {
+      "id": "minghua-c14",
+      "school": "明華",
+      "label": "選擇14",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        408.7,
+        710.5,
+        628.7
+      ]
+    },
+    {
+      "id": "minghua-c15",
+      "school": "明華",
+      "label": "選擇15",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        471.3,
+        710.5,
+        701.1
+      ]
+    },
+    {
+      "id": "minghua-c16",
+      "school": "明華",
+      "label": "選擇16",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        698.1,
+        710.5,
+        918.1
+      ]
+    },
+    {
+      "id": "minghua-c17",
+      "school": "明華",
+      "label": "選擇17",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        751.7,
+        710.5,
+        971.7
+      ]
+    },
+    {
+      "id": "minghua-c18",
+      "school": "明華",
+      "label": "選擇18",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        817.7,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "minghua-c20",
+      "school": "明華",
+      "label": "選擇20",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        918.8,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "fuhua-c9",
+      "school": "復華",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        120.6,
+        711.0,
+        246.8
+      ]
+    },
+    {
+      "id": "fuhua-c10",
+      "school": "復華",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        243.8,
+        711.0,
+        362.7
+      ]
+    },
+    {
+      "id": "fuhua-c11",
+      "school": "復華",
+      "label": "選擇11",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        359.7,
+        711.0,
+        485.2
+      ]
+    },
+    {
+      "id": "fuhua-c12",
+      "school": "復華",
+      "label": "選擇12",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        482.2,
+        711.0,
+        639.8
+      ]
+    },
+    {
+      "id": "fuhua-f1",
+      "school": "復華",
+      "label": "填充1",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        636.8,
+        711.0,
+        730.5
+      ]
+    },
+    {
+      "id": "fuhua-f2",
+      "school": "復華",
+      "label": "填充2",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        727.5,
+        711.0,
+        821.1
+      ]
+    },
+    {
+      "id": "fuhua-f3",
+      "school": "復華",
+      "label": "填充3",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        818.1,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "fuhua-f4",
+      "school": "復華",
+      "label": "填充4",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        896.2,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "fuhua-n1",
+      "school": "復華",
+      "label": "非選1",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        137.4,
+        711.0,
+        369.8
+      ]
+    },
+    {
+      "id": "fuhua-n2",
+      "school": "復華",
+      "label": "非選2",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        366.8,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "yangming-f10",
+      "school": "陽明",
+      "label": "填充10",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        61.0,
+        711.0,
+        244.0
+      ]
+    },
+    {
+      "id": "yangming-n1",
+      "school": "陽明",
+      "label": "非選1",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        241.0,
+        711.0,
+        371.3
+      ]
+    },
+    {
+      "id": "yangming-n2",
+      "school": "陽明",
+      "label": "非選2",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        368.3,
+        711.0,
+        568.5
+      ]
+    },
+    {
+      "id": "yangming-n3",
+      "school": "陽明",
+      "label": "非選3",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        565.5,
+        711.0,
+        784.5
+      ]
+    },
+    {
+      "id": "yangming-f2",
+      "school": "陽明",
+      "label": "填充2",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        43.0,
+        711.0,
+        136.0
+      ]
+    },
+    {
+      "id": "yangming-f5",
+      "school": "陽明",
+      "label": "填充5",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        385.0,
+        711.0,
+        514.0
+      ]
+    },
+    {
+      "id": "yangming-f8",
+      "school": "陽明",
+      "label": "填充8",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        788.7,
+        711.0,
+        880.0
+      ]
+    },
+    {
+      "id": "yangming-f9",
+      "school": "陽明",
+      "label": "填充9",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        877.0,
+        711.0,
+        987.0
+      ]
+    },
+    {
+      "id": "nanzih-f11",
+      "school": "楠梓",
+      "label": "填充11",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        42.4,
+        710.5,
+        203.0
+      ]
+    },
+    {
+      "id": "nanzih-f12",
+      "school": "楠梓",
+      "label": "填充12",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        200.0,
+        710.5,
+        420.0
+      ]
+    },
+    {
+      "id": "nanzih-f13",
+      "school": "楠梓",
+      "label": "填充13",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        265.8,
+        710.5,
+        485.8
+      ]
+    },
+    {
+      "id": "nanzih-f14",
+      "school": "楠梓",
+      "label": "填充14",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        304.2,
+        710.5,
+        524.2
+      ]
+    },
+    {
+      "id": "nanzih-f15",
+      "school": "楠梓",
+      "label": "填充15",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        358.6,
+        710.5,
+        578.6
+      ]
+    },
+    {
+      "id": "nanzih-f16",
+      "school": "楠梓",
+      "label": "填充16",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        427.2,
+        710.5,
+        537.2
+      ]
+    },
+    {
+      "id": "nanzih-n1",
+      "school": "楠梓",
+      "label": "非選1",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        534.2,
+        710.5,
+        682.9
+      ]
+    },
+    {
+      "id": "nanzih-n2",
+      "school": "楠梓",
+      "label": "非選2",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        679.9,
+        710.5,
+        832.0
+      ]
+    },
+    {
+      "id": "nanzih-n3",
+      "school": "楠梓",
+      "label": "非選3",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        829.0,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "fushan-f9",
+      "school": "福山",
+      "label": "填充9",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        36.3,
+        710.6,
+        231.6
+      ]
+    },
+    {
+      "id": "fushan-f10",
+      "school": "福山",
+      "label": "填充10",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        228.6,
+        710.6,
+        411.3
+      ]
+    },
+    {
+      "id": "fushan-f11",
+      "school": "福山",
+      "label": "填充11",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        408.3,
+        710.6,
+        567.5
+      ]
+    },
+    {
+      "id": "fushan-f12",
+      "school": "福山",
+      "label": "填充12",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        564.5,
+        710.6,
+        766.9
+      ]
+    },
+    {
+      "id": "fushan-f13",
+      "school": "福山",
+      "label": "填充13",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        763.9,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "longhua-c4",
+      "school": "龍華",
+      "label": "選擇4",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        507.4,
+        710.5,
+        600.4
+      ]
+    },
+    {
+      "id": "longhua-c5",
+      "school": "龍華",
+      "label": "選擇5",
+      "page": 1,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        597.4,
+        710.5,
+        709.2
+      ]
+    },
+    {
+      "id": "longhua-c8",
+      "school": "龍華",
+      "label": "選擇8",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        44.9,
+        710.5,
+        172.8
+      ]
+    },
+    {
+      "id": "longhua-c9",
+      "school": "龍華",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        169.8,
+        710.5,
+        310.4
+      ]
+    },
+    {
+      "id": "longhua-c10",
+      "school": "龍華",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        307.4,
+        710.5,
+        446.6
+      ]
+    },
+    {
+      "id": "longhua-c11",
+      "school": "龍華",
+      "label": "選擇11",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        443.6,
+        710.5,
+        618.7
+      ]
+    },
+    {
+      "id": "longhua-c12",
+      "school": "龍華",
+      "label": "選擇12",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        615.7,
+        710.5,
+        783.0
+      ]
+    },
+    {
+      "id": "longhua-c13",
+      "school": "龍華",
+      "label": "選擇13",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        780.0,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "longhua-c14",
+      "school": "龍華",
+      "label": "選擇14",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        37.7,
+        710.5,
+        221.5
+      ]
+    },
+    {
+      "id": "longhua-c15",
+      "school": "龍華",
+      "label": "選擇15",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        218.5,
+        710.5,
+        384.8
+      ]
+    },
+    {
+      "id": "longhua-c16",
+      "school": "龍華",
+      "label": "選擇16",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        381.8,
+        710.5,
+        564.2
+      ]
+    },
+    {
+      "id": "longhua-c17",
+      "school": "龍華",
+      "label": "選擇17",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        561.2,
+        710.5,
+        774.7
+      ]
+    },
+    {
+      "id": "longhua-c18",
+      "school": "龍華",
+      "label": "選擇18",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        771.7,
+        710.5,
+        986.8
+      ]
+    },
+    {
+      "id": "qixian-c14",
+      "school": "七賢",
+      "label": "選擇14",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        219.9,
+        710.6,
+        451.4
+      ]
+    },
+    {
+      "id": "qixian-c15",
+      "school": "七賢",
+      "label": "選擇15",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        448.4,
+        710.6,
+        549.3
+      ]
+    },
+    {
+      "id": "qixian-c16",
+      "school": "七賢",
+      "label": "選擇16",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        546.3,
+        710.6,
+        648.3
+      ]
+    },
+    {
+      "id": "qixian-c17",
+      "school": "七賢",
+      "label": "選擇17",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        645.3,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "zhengxing-f8",
+      "school": "正興",
+      "label": "填充8",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        61.7,
+        710.6,
+        192.4
+      ]
+    },
+    {
+      "id": "zhengxing-f9",
+      "school": "正興",
+      "label": "填充9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        189.4,
+        710.6,
+        299.1
+      ]
+    },
+    {
+      "id": "zhengxing-f10",
+      "school": "正興",
+      "label": "填充10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        296.1,
+        710.6,
+        429.0
+      ]
+    },
+    {
+      "id": "zhengxing-f11",
+      "school": "正興",
+      "label": "填充11",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        426.0,
+        710.6,
+        564.9
+      ]
+    },
+    {
+      "id": "zhengxing-f12",
+      "school": "正興",
+      "label": "填充12",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        561.9,
+        710.6,
+        695.0
+      ]
+    },
+    {
+      "id": "zhengxing-f13",
+      "school": "正興",
+      "label": "填充13",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        692.0,
+        710.6,
+        820.5
+      ]
+    },
+    {
+      "id": "zhengxing-f14",
+      "school": "正興",
+      "label": "填充14",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        817.5,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "minzu-c9",
+      "school": "民族",
+      "label": "選擇9",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        56.5,
+        710.6,
+        180.1
+      ]
+    },
+    {
+      "id": "minzu-c10",
+      "school": "民族",
+      "label": "選擇10",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        177.1,
+        710.6,
+        302.2
+      ]
+    },
+    {
+      "id": "minzu-c12",
+      "school": "民族",
+      "label": "選擇12",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        422.2,
+        710.6,
+        566.2
+      ]
+    },
+    {
+      "id": "minzu-c13",
+      "school": "民族",
+      "label": "選擇13",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        563.2,
+        710.6,
+        715.9
+      ]
+    },
+    {
+      "id": "minzu-c14",
+      "school": "民族",
+      "label": "選擇14",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        712.9,
+        710.6,
+        850.4
+      ]
+    },
+    {
+      "id": "minzu-c15",
+      "school": "民族",
+      "label": "選擇15",
+      "page": 2,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        847.4,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "fushan-f14",
+      "school": "福山",
+      "label": "填充14",
+      "page": 5,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        34.5,
+        710.6,
+        233.5
+      ]
+    },
+    {
+      "id": "fushan-f15",
+      "school": "福山",
+      "label": "填充15",
+      "page": 5,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        230.5,
+        710.6,
+        445.9
+      ]
+    },
+    {
+      "id": "fushan-f16",
+      "school": "福山",
+      "label": "填充16",
+      "page": 5,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        442.9,
+        710.6,
+        707.1
+      ]
+    },
+    {
+      "id": "fushan-n1",
+      "school": "福山",
+      "label": "非選1",
+      "page": 5,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        704.1,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "zhengxing-f21",
+      "school": "正興",
+      "label": "填充21",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        58.3,
+        710.6,
+        236.2
+      ]
+    },
+    {
+      "id": "zhengxing-f23",
+      "school": "正興",
+      "label": "填充23",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        417.0,
+        710.6,
+        611.6
+      ]
+    },
+    {
+      "id": "zhengxing-f24",
+      "school": "正興",
+      "label": "填充24",
+      "page": 4,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        608.6,
+        710.6,
+        987.0
+      ]
+    },
+    {
+      "id": "zhengxing-n1",
+      "school": "正興",
+      "label": "非選1",
+      "page": 5,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        91.3,
+        710.6,
+        423.8
+      ]
+    },
+    {
+      "id": "zhengxing-n2",
+      "school": "正興",
+      "label": "非選2",
+      "page": 5,
+      "status": "manual-crop",
+      "box": [
+        355,
+        90,
+        710,
+        610
+      ]
+    },
+    {
+      "id": "zhengxing-f15",
+      "school": "正興",
+      "label": "填充15",
+      "page": 3,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        55.5,
+        710.6,
+        189.6
+      ]
+    },
+    {
+      "id": "fushan-n2",
+      "school": "福山",
+      "label": "非選2",
+      "page": 6,
+      "status": "auto-crop",
+      "box": [
+        18.0,
+        49.9,
+        710.6,
+        987.0
+      ]
+    }
+  ]
+}

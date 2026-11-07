@@ -1,0 +1,41 @@
+{
+  "title": "圓的解法實驗室｜114 上國三第二次段考",
+  "version": "2026.11.07-r1",
+  "generatedAt": "2026-11-07",
+  "scope": "國中三年級上學期第二次段考・圓單元",
+  "questionCount": 204,
+  "schoolCount": 10,
+  "methodCount": 10,
+  "schools": {
+    "七賢": 14,
+    "五福": 18,
+    "正興": 20,
+    "民族": 22,
+    "明華": 23,
+    "復華": 25,
+    "陽明": 16,
+    "楠梓": 20,
+    "福山": 28,
+    "龍華": 18
+  },
+  "methods": {
+    "點、直線與圓的位置": 10,
+    "弦心距、垂徑與弦長": 22,
+    "切線、等切線與切點半徑": 42,
+    "弧、圓心角與圓周角": 42,
+    "圓內接四邊形與交角": 24,
+    "圓冪、相交弦與割切線": 5,
+    "弧長、扇形、弓形與圓環": 33,
+    "坐標平面中的圓": 7,
+    "找圓心與作切線": 8,
+    "綜合圖形與跨觀念": 11
+  },
+  "assets": {
+    "questionScreenImages": 204,
+    "questionPrintImages": 204,
+    "sourcePageScreenImages": 42,
+    "sourcePagePrintImages": 42
+  },
+  "progressStorage": "localStorage",
+  "cloudSync": false
+}
