@@ -75,3 +75,4 @@ $('#coverForm').addEventListener('submit',async e=>{
 });
 async function removeCover(gid){const g=group(gid);if(!g?.coverUrl||!confirm('確定移除「'+g.name+'」的封面顯示嗎？'))return;const success=await commit(data=>{const target=data.find(x=>x.id===gid);if(target)delete target.coverUrl});if(success)toast('已移除封面顯示')}
 </script></body></html>
+
