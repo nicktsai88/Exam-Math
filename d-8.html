@@ -225,6 +225,9 @@
     .written-area textarea { width: 100%; min-height: 150px; resize: vertical; padding: .85rem; border: 1px solid #C9D7EA; border-radius: 15px; background: #fff; }
     .written-answer { margin-top: .75rem; padding: .9rem 1rem; border-radius: 17px; background: #F4EFFF; border: 1px solid #CFC0F4; }
     .written-answer h3 { margin-top: 0; }
+    .written-answer h4 { margin: 1rem 0 .35rem; color: #6047B6; }
+    .full-credit-standard { margin-bottom: .9rem; padding: .8rem .9rem; border-radius: 15px; color: #5B4200; background: #FFF9D9; border: 1px solid #E8CD61; }
+    .full-credit-standard p { margin: .25rem 0 0; }
 
     .result-card { margin: 1rem 0; padding: clamp(1rem, 4vw, 1.6rem); border-radius: 24px; background: linear-gradient(135deg, #FFF, #F4EFFF); border: 1px solid #CFC0F4; box-shadow: var(--shadow); }
     .result-card h2 { margin-top: 0; }
@@ -690,15 +693,78 @@ window.EXAM_DATA = [
     id: 'n01', no: '非選 1', type: 'written',
     alt: '非選擇題第1題原卷截圖：學生自治會男女代表人數對話與兩小題完整題幹。',
     highlights: [[38, 13, 24, 6], [66, 13, 19, 6], [45, 54, 31, 6]],
-    answerHtml: R`<ol><li><b>第 (1) 小題：</b>設男生 \(x\) 人、女生 \(y\) 人。由 \(x+y=24\)、\(x=y+10\)，解得 \(x=17\)、\(y=7\)。所以女生有 <b>7 位</b>。</li><li><b>第 (2) 小題：</b>只能再推派同一性別。若加男生，女生比例只會更低，所以必須加女生。設再加 \(k\) 位女生，需 \(\frac{7+k}{24+k}\ge\frac13\)，得 \(k\ge1.5\)。總人數還必須是奇數，所以 \(k\) 要是奇數；最小可取 <b>3</b>。此時女生 \(10/27>1/3\)，男生 \(17/27>1/3\)。</li></ol>`,
-    fast: '先由「共 24 位、男生多 10 位」求出 17 男、7 女；要提高較少一方的比例只能加女生，再同時檢查奇數總人數。'
+    answerHtml: R`<div class="full-credit-standard"><strong>🏅 3 級分滿分標準</strong><p>第 (1) 小題答出女生有 7 位；第 (2) 小題解題策略正確，清楚、完整呈現為何要再推派女生及最少人數，且答案正確。</p></div>
+      <h4>第 (1) 小題｜求女生人數</h4>
+      <ol>
+        <li><b>Step 1｜設未知數：</b>設男生有 \(x\) 位，女生有 \(y\) 位。</li>
+        <li><b>Step 2｜依題意列式：</b>代表共有 24 位，而且男生比女生多 10 位，所以
+          \[\begin{cases}x+y=24\\x=y+10\end{cases}\]</li>
+        <li><b>Step 3｜代入求解：</b>把 \(x=y+10\) 代入第一式：
+          \[(y+10)+y=24\]
+          \[2y+10=24\]
+          \[2y=14\]
+          \[y=7\]
+          再得 \(x=7+10=17\)。</li>
+        <li><b>第 (1) 小題答案：</b>女生有 <strong>7 位</strong>。</li>
+      </ol>
+      <h4>第 (2) 小題｜判斷應增加哪一性別及最少人數</h4>
+      <ol>
+        <li><b>Step 1｜找出目前未達標的一方：</b>每一性別至少要占總人數的 \(\frac13\)。目前
+          \[24\times\frac13=8>7\]
+          女生只有 7 位，未達 \(\frac13\)；若增加男生，女生比例只會更低，所以必須增加<strong>女生</strong>。</li>
+        <li><b>Step 2｜同時檢查「總數為奇數」與「女生至少占三分之一」：</b>
+          <ul>
+            <li>加 1 位女生：總數 \(25\) 是奇數，但 \(\frac{7+1}{24+1}=\frac8{25}<\frac13\)，不合規定。</li>
+            <li>加 2 位女生：總數 \(26\) 是偶數，不合規定。</li>
+            <li>加 3 位女生：總數 \(27\) 是奇數，而且 \(\frac{7+3}{24+3}=\frac{10}{27}>\frac13\)。</li>
+          </ul>
+        </li>
+        <li><b>Step 3｜複核另一性別：</b>男生比例為 \(\frac{17}{27}>\frac13\)，兩個性別都符合規定。</li>
+        <li><b>第 (2) 小題答案：</b>應再推派<strong>女生</strong>，至少再推派 <strong>3 位</strong>。</li>
+      </ol>`,
+    fast: '滿分作答不能只寫「3 位女生」：要先求出 17 男、7 女，再逐一排除增加 1 位與 2 位，最後驗證增加 3 位時總數為奇數，且男女比例都不少於三分之一。'
   },
   {
     id: 'n02', no: '非選 2', type: 'written',
     alt: '非選擇題第2題原卷截圖：長方形摺紙形成平行四邊形的三幅圖與兩小題完整題幹。',
     highlights: [[29, 6, 31, 7], [22, 73, 42, 7], [20, 82, 35, 7]],
-    answerHtml: R`<ol><li><b>第 (1) 小題：</b>平行四邊形 AECF 周長為 46，所以 \(AE+AF=23\)。若 \(AE=x\)，則 \(AF=23-x\)。</li><li><b>第 (2) 小題：</b>摺線使對應長度相等，得 \(CF=AE=x\)，所以 \(BF=15-x\)。在直角三角形 \(AB'F\) 中，\(AB'=12\)、\(B'F=15-x\)、\(AF=23-x\)。由畢氏定理：\[12^2+(15-x)^2=(23-x)^2\]整理得 \(16x=160\)，所以 \(x=10\)。平行四邊形以 \(AE=10\) 為底，高為 12，面積為 \(10\times12=\mathbf{120}\)。</li></ol>`,
-    fast: '幾何圖解重點：先用周長把斜邊 AF 寫成 \(23-x\)，再把摺後形成的直角三角形三邊全部用 \(x\) 表示，最後套畢氏定理。'
+    answerHtml: R`<div class="full-credit-standard"><strong>🏅 3 級分滿分標準</strong><p>解題策略正確，能清楚、完整表達線段關係、摺紙後的直角三角形、畢氏定理計算與面積結論，且答案正確。</p></div>
+      <h4>第 (1) 小題｜用 \(x\) 表示 \(AF\)</h4>
+      <ol>
+        <li><b>Step 1｜使用平行四邊形對邊相等：</b>四邊形 \(AECF\) 是平行四邊形，所以
+          \[AE=CF,\qquad AF=EC\]</li>
+        <li><b>Step 2｜使用周長 46：</b>
+          \[AE+EC+CF+FA=46\]
+          \[2(AE+AF)=46\]
+          \[AE+AF=23\]</li>
+        <li><b>Step 3｜代入 \(AE=x\)：</b>
+          \[x+AF=23\]
+          \[AF=23-x\]</li>
+        <li><b>第 (1) 小題答案：</b>\(\boxed{AF=23-x}\)。</li>
+      </ol>
+      <h4>第 (2) 小題｜求平行四邊形 \(AECF\) 的面積</h4>
+      <ol>
+        <li><b>Step 1｜寫出底邊上的線段：</b>由平行四邊形對邊相等，
+          \[CF=AE=x\]
+          又 \(BC=15\)，所以
+          \[BF=BC-CF=15-x\]</li>
+        <li><b>Step 2｜使用摺紙的等長、等角性質：</b>以 \(AF\) 為摺線把 B 點摺到 \(B'\) 點，摺線上的 A、F 不動，因此
+          \[AB'=AB=12,\qquad B'F=BF=15-x\]
+          而 \(\angle ABF=90^\circ\)，摺疊後角度不變，所以 \(\angle AB'F=90^\circ\)。因此 \(\triangle AB'F\) 是直角三角形，斜邊
+          \[AF=23-x\]</li>
+        <li><b>Step 3｜套用畢氏定理：</b>
+          \[AB'^2+B'F^2=AF^2\]
+          \[12^2+(15-x)^2=(23-x)^2\]</li>
+        <li><b>Step 4｜完整展開並解方程式：</b>
+          \[144+(225-30x+x^2)=529-46x+x^2\]
+          \[369-30x=529-46x\]
+          \[16x=160\]
+          \[x=10\]</li>
+        <li><b>Step 5｜求面積：</b>平行四邊形 \(AECF\) 的底 \(AE=x=10\)，高就是長方形的高 \(AB=12\)，所以
+          \[\text{面積}=10\times12=120\]</li>
+        <li><b>第 (2) 小題答案：</b>平行四邊形 \(AECF\) 的面積為 <strong>120 平方單位</strong>。</li>
+      </ol>`,
+    fast: R`滿分圖解順序是：周長得到 \(AF=23-x\) → 平行四邊形得到 \(CF=x\)、\(BF=15-x\) → 摺疊得到 \(AB'=12\)、\(B'F=15-x\) 及直角 → 畢氏定理解出 \(x=10\) → 底乘高得到 120。`
   }
 ];
 
@@ -784,9 +850,9 @@ window.EXAM_DATA = [
           <div class="written-area">
             <label for="text-${q.id}"><strong>✏️ 我的作答</strong></label>
             <textarea id="text-${q.id}" data-written="${q.id}" placeholder="請在這裡整理列式、計算與說明。">${escapeHtml(state.writtenText[q.id] || '')}</textarea>
-            <button class="primary-btn" type="button" data-show-written="${q.id}">完成作答並顯示參考答案</button>
+            <button class="primary-btn" type="button" data-show-written="${q.id}">完成作答並顯示滿分標準解答</button>
           </div>
-          <div class="written-answer" data-written-answer="${q.id}"><h3>✅ 參考答案與圖解步驟</h3>${q.answerHtml}<div class="fast"><strong>⚡ 快速解法：</strong>${q.fast}</div></div>
+          <div class="written-answer" data-written-answer="${q.id}"><h3>✅ 滿分標準解答（3 級分）</h3>${q.answerHtml}<div class="fast"><strong>⚡ 滿分作答提醒：</strong>${q.fast}</div></div>
         </article>`;
       }
 
