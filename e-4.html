@@ -1,0 +1,1321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ff7aa8">
+  <meta name="description" content="國中教育會考必備數學公式資料庫：可搜尋、分類、收藏、列印與新增公式，幾何公式附圖。">
+  <title>會考公式星球｜國中數學公式資料庫</title>
+  <style>
+    :root {
+      --ink: #3f3650;
+      --muted: #746b83;
+      --paper: rgba(255, 255, 255, .88);
+      --line: rgba(86, 69, 110, .12);
+      --pink: #ff6f9f;
+      --pink-soft: #ffe3ee;
+      --purple: #8467e8;
+      --purple-soft: #eee9ff;
+      --blue: #4ba8d8;
+      --blue-soft: #dff4ff;
+      --mint: #38b99a;
+      --mint-soft: #dff8f0;
+      --yellow: #f1b948;
+      --yellow-soft: #fff4ce;
+      --orange: #ee865d;
+      --orange-soft: #ffeadf;
+      --shadow: 0 22px 60px rgba(85, 63, 118, .12);
+      --shadow-small: 0 9px 24px rgba(85, 63, 118, .10);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 204, 226, .78), transparent 27%),
+        radial-gradient(circle at 92% 20%, rgba(205, 239, 255, .84), transparent 29%),
+        radial-gradient(circle at 70% 86%, rgba(222, 248, 235, .74), transparent 26%),
+        #fbfaff;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .38;
+      background-image: radial-gradient(#9f8bc2 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+    }
+
+    button, input, select, textarea { font: inherit; }
+
+    button { color: inherit; }
+
+    .shell {
+      width: min(1420px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+      gap: 24px;
+      margin-top: 28px;
+      padding: clamp(30px, 5vw, 68px);
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(128deg, rgba(255, 255, 255, .94), rgba(255, 242, 248, .92));
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .hero::before {
+      width: 290px;
+      height: 290px;
+      top: -145px;
+      right: -40px;
+      background: rgba(205, 184, 255, .34);
+    }
+
+    .hero::after {
+      width: 180px;
+      height: 180px;
+      left: 45%;
+      bottom: -125px;
+      background: rgba(120, 222, 206, .25);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #6c4960;
+      background: var(--pink-soft);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: .04em;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.03;
+      letter-spacing: -.05em;
+    }
+
+    h1 .accent {
+      background: linear-gradient(90deg, var(--pink), #f39b59, var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.85;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hero-badges span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .mascot-wrap {
+      display: grid;
+      place-items: center;
+      min-height: 280px;
+    }
+
+    .mascot {
+      width: min(330px, 100%);
+      filter: drop-shadow(0 20px 20px rgba(87, 65, 117, .10));
+      animation: bob 4s ease-in-out infinite;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-9px) rotate(1deg); }
+    }
+
+    .quick-guide {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 22px 0;
+    }
+
+    .guide-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow-small);
+    }
+
+    .guide-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      font-size: 23px;
+    }
+
+    .guide-card:nth-child(1) .guide-icon { background: var(--yellow-soft); }
+    .guide-card:nth-child(2) .guide-icon { background: var(--blue-soft); }
+    .guide-card:nth-child(3) .guide-icon { background: var(--mint-soft); }
+
+    .guide-card strong { display: block; margin-bottom: 4px; }
+    .guide-card small { color: var(--muted); line-height: 1.6; }
+
+    .toolbar-wrap {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      margin: 20px 0 24px;
+    }
+
+    .toolbar {
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 14px 34px rgba(77, 61, 101, .14);
+      backdrop-filter: blur(18px);
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto auto auto;
+      gap: 10px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box span {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 19px;
+      pointer-events: none;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px 0 47px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      outline: none;
+      color: var(--ink);
+      background: #fff;
+      transition: .2s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px rgba(132, 103, 232, .12);
+    }
+
+    .action-button,
+    .chip {
+      border: 0;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .action-button:hover,
+    .chip:hover { transform: translateY(-1px); }
+
+    .action-button {
+      min-height: 48px;
+      padding: 0 16px;
+      border-radius: 15px;
+      background: #f4f1f8;
+      white-space: nowrap;
+    }
+
+    .action-button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink), #f08c67);
+      box-shadow: 0 8px 18px rgba(255, 111, 159, .25);
+    }
+
+    .action-button.is-active {
+      color: #fff;
+      background: var(--purple);
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      margin-top: 11px;
+      padding: 2px 1px 3px;
+      scrollbar-width: thin;
+    }
+
+    .chip {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #62596e;
+      background: #f7f4fa;
+      font-size: 14px;
+    }
+
+    .chip.is-active {
+      color: #fff;
+      background: var(--purple);
+      box-shadow: 0 6px 14px rgba(132, 103, 232, .22);
+    }
+
+    .results-bar {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin: 22px 2px 16px;
+    }
+
+    .results-bar h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+    }
+
+    .results-bar p {
+      margin: 5px 0 0;
+      color: var(--muted);
+    }
+
+    .result-count {
+      flex: 0 0 auto;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #5a4c6f;
+      background: var(--purple-soft);
+      font-weight: 900;
+    }
+
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .formula-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .95);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow-small);
+      transition: transform .22s ease, box-shadow .22s ease;
+      break-inside: avoid;
+    }
+
+    .formula-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 17px 34px rgba(84, 63, 114, .15);
+    }
+
+    .formula-card::after {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      right: -52px;
+      top: -60px;
+      border-radius: 50%;
+      background: var(--card-soft, var(--pink-soft));
+      opacity: .72;
+      pointer-events: none;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 18px 18px 12px;
+    }
+
+    .card-number {
+      display: grid;
+      place-items: center;
+      flex: 0 0 46px;
+      min-height: 46px;
+      padding: 0 5px;
+      border-radius: 15px;
+      color: #fff;
+      background: var(--card-color, var(--pink));
+      font-weight: 900;
+      font-size: 14px;
+      box-shadow: 0 8px 17px color-mix(in srgb, var(--card-color, var(--pink)) 28%, transparent);
+    }
+
+    .card-title { min-width: 0; flex: 1; }
+
+    .category-tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 5px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--card-color, var(--pink));
+      background: var(--card-soft, var(--pink-soft));
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .card-title h3 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.35;
+    }
+
+    .favorite-button {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 13px;
+      cursor: pointer;
+      background: #f6f3f8;
+      font-size: 18px;
+    }
+
+    .favorite-button.is-favorite {
+      color: #d38a00;
+      background: var(--yellow-soft);
+    }
+
+    .formula-box {
+      margin: 0 18px;
+      padding: 15px;
+      border-radius: 16px;
+      color: #403650;
+      background: linear-gradient(135deg, var(--card-soft, var(--pink-soft)), rgba(255,255,255,.8));
+      font-family: Cambria, "Times New Roman", "Microsoft JhengHei", serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.72;
+      overflow-wrap: anywhere;
+    }
+
+    .formula-box .line { display: block; }
+    .formula-box sup, .formula-box sub { font-size: .7em; }
+
+    .diagram-box {
+      display: grid;
+      place-items: center;
+      min-height: 170px;
+      margin: 12px 18px 0;
+      padding: 10px;
+      border: 1px dashed color-mix(in srgb, var(--card-color, var(--pink)) 32%, transparent);
+      border-radius: 17px;
+      background: rgba(255,255,255,.72);
+    }
+
+    .diagram-box svg {
+      width: 100%;
+      height: 155px;
+      overflow: visible;
+    }
+
+    .diagram-box .shape {
+      fill: color-mix(in srgb, var(--card-soft, var(--pink-soft)) 52%, white);
+      stroke: var(--card-color, var(--pink));
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .diagram-box .guide {
+      fill: none;
+      stroke: #7e728c;
+      stroke-width: 2;
+      stroke-dasharray: 5 5;
+    }
+
+    .diagram-box .solid {
+      fill: none;
+      stroke: #4f465b;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .diagram-box .label {
+      fill: #4a4057;
+      font: 700 15px "Microsoft JhengHei", sans-serif;
+    }
+
+    .card-note {
+      margin: 13px 18px 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    .card-note strong { color: var(--ink); }
+
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px 18px;
+    }
+
+    .tiny-button {
+      border: 0;
+      border-radius: 11px;
+      padding: 8px 10px;
+      cursor: pointer;
+      color: #665d70;
+      background: #f5f2f7;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .source-no {
+      color: #9a91a5;
+      font-size: 12px;
+    }
+
+    .pending-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-left: 5px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      color: #9a5b00;
+      background: var(--yellow-soft);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 60px 24px;
+      text-align: center;
+      border: 2px dashed rgba(132, 103, 232, .22);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.68);
+    }
+
+    .empty-state .emoji { font-size: 48px; }
+
+    .archive {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 32px 0 22px;
+    }
+
+    .archive-card {
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.95);
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.8);
+      box-shadow: var(--shadow-small);
+    }
+
+    .archive-card h2,
+    .archive-card h3 { margin-top: 0; }
+
+    .archive-card p,
+    .archive-card li { color: var(--muted); line-height: 1.8; }
+
+    .archive-card ul { margin-bottom: 0; padding-left: 21px; }
+
+    .workflow-steps {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .workflow-step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .workflow-step b {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      color: #fff;
+      background: var(--purple);
+    }
+
+    footer {
+      padding: 24px 0 42px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    dialog {
+      width: min(700px, calc(100% - 28px));
+      max-height: min(860px, calc(100vh - 34px));
+      padding: 0;
+      border: 0;
+      border-radius: 28px;
+      color: var(--ink);
+      background: #fff;
+      box-shadow: 0 32px 100px rgba(56, 41, 79, .32);
+    }
+
+    dialog::backdrop {
+      background: rgba(47, 37, 61, .42);
+      backdrop-filter: blur(8px);
+    }
+
+    .dialog-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, var(--pink-soft), var(--purple-soft));
+    }
+
+    .dialog-head h2 { margin: 0; font-size: 24px; }
+
+    .close-button {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 13px;
+      cursor: pointer;
+      background: rgba(255,255,255,.8);
+      font-size: 23px;
+    }
+
+    .dialog-body {
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-weight: 900; font-size: 14px; }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid rgba(84, 66, 104, .18);
+      border-radius: 13px;
+      color: var(--ink);
+      background: #fbfaff;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 4px rgba(132,103,232,.10);
+    }
+
+    .field textarea { min-height: 88px; resize: vertical; }
+
+    .form-tip {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: #6c5d75;
+      background: var(--yellow-soft);
+      line-height: 1.65;
+      font-size: 13px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .dialog-actions .action-button { min-height: 44px; }
+
+    .inbox {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .inbox h3 { margin: 0 0 5px; }
+    .inbox p { margin: 0 0 13px; color: var(--muted); font-size: 14px; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      z-index: 100;
+      transform: translate(-50%, 24px);
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: #fff;
+      background: #3f3650;
+      box-shadow: 0 12px 30px rgba(47, 36, 63, .28);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+      font-weight: 800;
+    }
+
+    .toast.is-visible {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 1100px) {
+      .formula-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { grid-template-columns: 1.25fr .75fr; }
+      .search-row { grid-template-columns: 1fr auto auto; }
+      #printButton { display: none; }
+    }
+
+    @media (max-width: 780px) {
+      .shell { width: min(100% - 22px, 680px); }
+      .hero { grid-template-columns: 1fr; padding: 28px 24px; }
+      .mascot-wrap { min-height: 190px; }
+      .mascot { width: min(240px, 75%); }
+      .quick-guide { grid-template-columns: 1fr; }
+      .formula-grid { grid-template-columns: 1fr; }
+      .search-row { grid-template-columns: 1fr 1fr; }
+      .search-box { grid-column: 1 / -1; }
+      #printButton { display: block; }
+      .archive { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full, .form-tip { grid-column: auto; }
+      .results-bar { align-items: flex-start; }
+      .toolbar-wrap { top: 5px; }
+    }
+
+    @media (max-width: 480px) {
+      .search-row { grid-template-columns: 1fr; }
+      .search-box { grid-column: auto; }
+      .action-button { width: 100%; }
+      .card-head { padding: 16px 15px 11px; }
+      .formula-box, .diagram-box, .card-note { margin-left: 15px; margin-right: 15px; }
+      .card-actions { padding-left: 15px; padding-right: 15px; }
+      .dialog-body { padding: 18px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      body::before, .toolbar-wrap, .quick-guide, .archive, .mascot-wrap, .card-actions, footer { display: none !important; }
+      .shell { width: 100%; }
+      .hero { margin: 0 0 14px; padding: 18px; grid-template-columns: 1fr; box-shadow: none; border: 1px solid #ddd; }
+      h1 { font-size: 34px; }
+      .hero-copy { font-size: 14px; }
+      .formula-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .formula-card { box-shadow: none; border: 1px solid #d9d9d9; }
+      .formula-card:hover { transform: none; }
+      .diagram-box { min-height: 130px; }
+      .diagram-box svg { height: 120px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero" aria-labelledby="pageTitle">
+      <div>
+        <div class="eyebrow">✦ 國中會考必備・公式資料庫 ✦</div>
+        <h1 id="pageTitle">會考<span class="accent">公式星球</span></h1>
+        <p class="hero-copy">把三年數學濃縮成一張張好找、好懂、好複習的公式卡。輸入關鍵字就能查詢，幾何公式搭配圖形，還能收藏、列印與新增自己的筆記。</p>
+        <div class="hero-badges" aria-label="資料庫特色">
+          <span>📚 56 條講義重點</span>
+          <span>🔎 即時搜尋</span>
+          <span>📐 幾何附圖</span>
+          <span>💾 離線可用</span>
+        </div>
+      </div>
+      <div class="mascot-wrap" aria-hidden="true">
+        <svg class="mascot" viewBox="0 0 340 300" role="img">
+          <defs>
+            <linearGradient id="bodyGradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fff"/>
+              <stop offset="1" stop-color="#fff5fa"/>
+            </linearGradient>
+          </defs>
+          <path d="M80 77 60 31l48 28M232 61l43-29-12 51" fill="#ffd8e6" stroke="#50475d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M88 61c28-23 120-25 155 3 34 28 43 126 8 166-33 38-139 42-177 5-37-36-29-144 14-174Z" fill="url(#bodyGradient)" stroke="#50475d" stroke-width="8"/>
+          <ellipse cx="118" cy="139" rx="8" ry="13" fill="#50475d"/>
+          <ellipse cx="210" cy="139" rx="8" ry="13" fill="#50475d"/>
+          <ellipse cx="102" cy="166" rx="21" ry="10" fill="#ffbfd5" opacity=".72"/>
+          <ellipse cx="226" cy="166" rx="21" ry="10" fill="#ffbfd5" opacity=".72"/>
+          <path d="M153 162c7 9 15 9 22 0M164 159v13c-8 9-17 8-23 2m23-2c8 9 17 8 23 2" fill="none" stroke="#50475d" stroke-width="5" stroke-linecap="round"/>
+          <path d="M112 224c30 15 74 15 105-1" fill="none" stroke="#8467e8" stroke-width="8" stroke-linecap="round"/>
+          <g transform="translate(238 106) rotate(22)">
+            <rect x="0" y="0" width="30" height="112" rx="8" fill="#ffd052" stroke="#50475d" stroke-width="6"/>
+            <path d="m0 0 15-28L30 0Z" fill="#f5a873" stroke="#50475d" stroke-width="6" stroke-linejoin="round"/>
+            <path d="m11-19 4-9 4 9Z" fill="#50475d"/>
+            <path d="M8 91h14" stroke="#e2932e" stroke-width="4"/>
+          </g>
+          <path d="m46 119 8 17 18 2-14 12 4 18-16-9-16 9 4-18-14-12 18-2Z" fill="#ffd052"/>
+          <circle cx="284" cy="103" r="12" fill="#a990f1"/>
+          <path d="M74 233c-20 10-27 25-27 42M250 231c20 9 29 25 30 41" fill="none" stroke="#50475d" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="quick-guide" aria-label="使用方式">
+      <article class="guide-card"><div class="guide-icon">🔎</div><div><strong>輸入任何線索</strong><small>搜尋「勾股」、「圓」、「中點」或公式中的符號。</small></div></article>
+      <article class="guide-card"><div class="guide-icon">🌈</div><div><strong>依章節快速篩選</strong><small>用分類色票縮小範圍，複習不迷路。</small></div></article>
+      <article class="guide-card"><div class="guide-icon">✨</div><div><strong>建立你的公式庫</strong><small>先在本機新增，再複製給置頂對話正式歸檔。</small></div></article>
+    </section>
+
+    <div class="toolbar-wrap">
+      <section class="toolbar" aria-label="公式資料庫工具列">
+        <div class="search-row">
+          <label class="search-box">
+            <span aria-hidden="true">🔎</span>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="搜尋公式、章節、關鍵字…" aria-label="搜尋公式">
+          </label>
+          <button class="action-button" id="favoriteFilter" type="button" aria-pressed="false">☆ 只看收藏</button>
+          <button class="action-button" id="printButton" type="button">🖨️ 列印</button>
+          <button class="action-button primary" id="openAddDialog" type="button">＋ 新增公式</button>
+        </div>
+        <div class="chip-row" id="categoryChips" aria-label="公式分類"></div>
+      </section>
+    </div>
+
+    <section aria-labelledby="formulaHeading">
+      <div class="results-bar">
+        <div>
+          <h2 id="formulaHeading">公式卡片</h2>
+          <p id="activeFilterText">全部分類・依講義順序排列</p>
+        </div>
+        <div class="result-count" id="resultCount" aria-live="polite">0 張</div>
+      </div>
+      <div class="formula-grid" id="formulaGrid"></div>
+    </section>
+
+    <section class="archive" aria-label="資料歸檔與更新方式">
+      <article class="archive-card">
+        <h2>📦 公式歸檔紀錄</h2>
+        <ul>
+          <li><strong>v1.0・2026-11-17</strong>：依使用者提供的 18 頁公式講義建立首版。</li>
+          <li>原講義第 14、15 項內容重複，已合併為同一張公式卡。</li>
+          <li>公式符號已改為適合網頁閱讀的格式，幾何類別補上示意圖。</li>
+        </ul>
+      </article>
+      <article class="archive-card">
+        <h2>🚀 新增後怎麼正式發佈？</h2>
+        <p>本頁的「新增公式」會先安全保存在這台裝置。要讓所有人都看到，請將新增內容交給置頂的 ChatGPT 對話：</p>
+        <div class="workflow-steps">
+          <div class="workflow-step"><b>1</b><span>按「新增公式」填入內容。</span></div>
+          <div class="workflow-step"><b>2</b><span>按「複製給置頂對話」。</span></div>
+          <div class="workflow-step"><b>3</b><span>貼到對話，我會歸檔並立即更新 GitHub。</span></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    公式圖形皆為教學示意，不按比例｜資料依《國中教育會考數學公式》重新編排<br>
+    會考公式星球 v1.0・祝你每次都能找到關鍵公式 ✦
+  </footer>
+
+  <dialog id="addDialog" aria-labelledby="addDialogTitle">
+    <div class="dialog-head">
+      <h2 id="addDialogTitle">✨ 新增一張公式卡</h2>
+      <button class="close-button" id="closeAddDialog" type="button" aria-label="關閉">×</button>
+    </div>
+    <div class="dialog-body">
+      <form id="formulaForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="newTitle">公式名稱 *</label>
+            <input id="newTitle" name="title" required placeholder="例：海龍公式">
+          </div>
+          <div class="field">
+            <label for="newCategory">分類 *</label>
+            <select id="newCategory" name="category" required></select>
+          </div>
+          <div class="field full">
+            <label for="newFormula">公式內容 *</label>
+            <textarea id="newFormula" name="formula" required placeholder="例：面積 = √[s(s-a)(s-b)(s-c)]"></textarea>
+          </div>
+          <div class="field full">
+            <label for="newNote">說明／記憶提示</label>
+            <textarea id="newNote" name="note" placeholder="補充適用條件、易錯點或簡短例子"></textarea>
+          </div>
+          <div class="field">
+            <label for="newKeywords">搜尋關鍵字</label>
+            <input id="newKeywords" name="keywords" placeholder="以逗號分隔">
+          </div>
+          <div class="field">
+            <label for="newDiagram">示意圖</label>
+            <select id="newDiagram" name="diagram">
+              <option value="">不需要</option>
+              <option value="right-triangle">直角三角形</option>
+              <option value="triangle-angles">一般三角形</option>
+              <option value="coordinate">直角坐標</option>
+              <option value="circle-angles">圓</option>
+              <option value="trapezoid">梯形</option>
+              <option value="parabola">拋物線</option>
+            </select>
+          </div>
+          <p class="form-tip">🔒 新增內容只保存在目前瀏覽器，不會自動上傳帳號或密碼。要公開發佈時，請使用下方的「複製給置頂對話」。</p>
+        </div>
+        <div class="dialog-actions">
+          <button class="action-button" type="reset">清除</button>
+          <button class="action-button primary" type="submit">儲存到本機</button>
+        </div>
+      </form>
+      <section class="inbox" aria-labelledby="inboxTitle">
+        <h3 id="inboxTitle">📮 待歸檔收件匣</h3>
+        <p id="inboxSummary">目前沒有待歸檔公式。</p>
+        <div class="dialog-actions">
+          <button class="action-button" id="exportCustom" type="button">下載備份</button>
+          <button class="action-button primary" id="copyForChat" type="button">複製給置頂對話</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const categoryMeta = {
+      "數與運算": { color: "#ee865d", soft: "#ffeadf", icon: "🔢" },
+      "代數": { color: "#8467e8", soft: "#eee9ff", icon: "✏️" },
+      "坐標與函數": { color: "#4ba8d8", soft: "#dff4ff", icon: "📈" },
+      "數列": { color: "#d69332", soft: "#fff2cf", icon: "🪜" },
+      "平面幾何": { color: "#ff6f9f", soft: "#ffe3ee", icon: "📐" },
+      "立體幾何": { color: "#38b99a", soft: "#dff8f0", icon: "🧊" },
+      "統計與機率": { color: "#5577d8", soft: "#e6ecff", icon: "🎲" }
+    };
+
+    const formulas = [
+      { id: "1", no: "01", category: "數與運算", title: "絕對值", formula: "<span class='line'>|a| ≥ 0</span><span class='line'>a ≥ 0 時，|a| = a</span><span class='line'>a &lt; 0 時，|a| = −a</span>", note: "絕對值代表數線上到 0 的距離，所以永遠不會是負數。兩點距離可寫成 |a−b|。", keywords: "正數 負數 距離 數線" },
+      { id: "2", no: "02", category: "數與運算", title: "數線距離與中點", formula: "<span class='line'>A(a)、B(b)</span><span class='line'>AB = |a−b|</span><span class='line'>中點 M = (a+b) ÷ 2</span>", note: "距離要取絕對值；中點則是兩端點所代表數的平均。", keywords: "數線 兩點距離 平均 中點", diagram: "numberline" },
+      { id: "3", no: "03", category: "數與運算", title: "指數律", formula: "<span class='line'>a<sup>m</sup>·a<sup>n</sup> = a<sup>m+n</sup></span><span class='line'>a<sup>m</sup>÷a<sup>n</sup> = a<sup>m−n</sup></span><span class='line'>(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup></span><span class='line'>a<sup>0</sup>=1，a<sup>−m</sup>=1/a<sup>m</sup></span>", note: "同底數相乘，指數相加；同底數相除，指數相減；次方的次方，指數相乘。", keywords: "次方 冪 指數 負指數 零次方" },
+      { id: "4", no: "04", category: "數與運算", title: "科學記號運算", formula: "<span class='line'>(a×10<sup>m</sup>)(b×10<sup>n</sup>) = ab×10<sup>m+n</sup></span><span class='line'>(a×10<sup>m</sup>)÷(b×10<sup>n</sup>) = (a/b)×10<sup>m−n</sup></span>", note: "加減前先把 10 的次方化為相同；標準科學記號需滿足 1 ≤ |a| &lt; 10。", keywords: "科學記號 大數 小數 10次方" },
+      { id: "5", no: "05", category: "數與運算", title: "特殊數字和與平方數", formula: "<span class='line'>1+3+5+⋯+(2n−1) = n<sup>2</sup></span><span class='line'>1+2+⋯+n+⋯+2+1 = n<sup>2</sup></span>", note: "前 n 個正奇數的和就是 n²，常用圖形拼成正方形理解。", keywords: "奇數和 正方形數 數列" },
+      { id: "6", no: "06", category: "數與運算", title: "正因數個數", formula: "<span class='line'>N = p<sub>1</sub><sup>a</sup>p<sub>2</sub><sup>b</sup>⋯p<sub>k</sub><sup>c</sup></span><span class='line'>正因數個數 = (a+1)(b+1)⋯(c+1)</span>", note: "先做標準分解式，再把每個質因數的指數各加 1 後相乘。", keywords: "質因數 標準分解 因數個數" },
+      { id: "7", no: "07", category: "數與運算", title: "倍數判別法", formula: "<span class='line'>2：個位為偶數　5：個位為 0 或 5</span><span class='line'>3、9：各位數字和為 3、9 的倍數</span><span class='line'>4：末兩位　8：末三位</span><span class='line'>11：奇數位和−偶數位和為 11 的倍數</span>", note: "六位數 abcabc = abc×1001，而 1001 = 7×11×13。", keywords: "整除 2 3 4 5 8 9 11 倍數" },
+      { id: "8", no: "08", category: "坐標與函數", title: "坐標平面距離與中點", formula: "<span class='line'>PQ = √[(x<sub>2</sub>−x<sub>1</sub>)<sup>2</sup>+(y<sub>2</sub>−y<sub>1</sub>)<sup>2</sup>]</span><span class='line'>M((x<sub>1</sub>+x<sub>2</sub>)/2, (y<sub>1</sub>+y<sub>2</sub>)/2)</span>", note: "點 (x,y) 到 x 軸的距離是 |y|，到 y 軸的距離是 |x|。", keywords: "兩點距離 中點 x軸 y軸", diagram: "coordinate" },
+      { id: "9", no: "09", category: "坐標與函數", title: "直線方程式", formula: "<span class='line'>斜截式：y = mx+b</span><span class='line'>兩點式：(y−y<sub>1</sub>)/(y<sub>2</sub>−y<sub>1</sub>) = (x−x<sub>1</sub>)/(x<sub>2</sub>−x<sub>1</sub>)</span><span class='line'>截距式：x/a + y/b = 1</span>", note: "已知兩點可先求斜率；通過 (a,0)、(0,b) 時可直接使用截距式。", keywords: "一次函數 斜率 斜截式 兩點式 截距", diagram: "line" },
+      { id: "10", no: "10", category: "坐標與函數", title: "坐標多邊形面積（鞋帶公式）", formula: "<span class='line'>面積 = ½ |Σx<sub>i</sub>y<sub>i+1</sub> − Σy<sub>i</sub>x<sub>i+1</sub>|</span>", note: "頂點需依順時針或逆時針排列，最後再取絕對值；任意凸多邊形皆可用。", keywords: "三角形 面積 行列式 鞋帶 凸多邊形", diagram: "polygon" },
+      { id: "11", no: "11", category: "坐標與函數", title: "內分點公式", formula: "<span class='line'>AP:PB = m:n</span><span class='line'>P((nx<sub>A</sub>+mx<sub>B</sub>)/(m+n), (ny<sub>A</sub>+my<sub>B</sub>)/(m+n))</span>", note: "權重和相鄰線段相反：靠近 A 的點，A 的權重較大。", keywords: "內分比 線段 比例 坐標", diagram: "segment" },
+      { id: "12", no: "12", category: "代數", title: "比例式與比例積", formula: "<span class='line'>a:b = c:d</span><span class='line'>ad = bc</span>", note: "兩外項乘積等於兩內項乘積。使用前注意分母不得為 0。", keywords: "比例 外項 內項 交叉相乘" },
+      { id: "13", no: "13", category: "代數", title: "比例分配", formula: "<span class='line'>x:y:z = a:b:c，且 x+y+z=A</span><span class='line'>x = aA/(a+b+c)</span><span class='line'>y = bA/(a+b+c)，z = cA/(a+b+c)</span>", note: "先求比例總份數，再依各自份數分配總量。", keywords: "按比例分配 比值 總量" },
+      { id: "14-15", no: "14–15", category: "代數", title: "乘法公式", formula: "<span class='line'>(a+b)(a−b) = a<sup>2</sup>−b<sup>2</sup></span><span class='line'>(a±b)<sup>2</sup> = a<sup>2</sup>±2ab+b<sup>2</sup></span><span class='line'>(a+b+c)<sup>2</sup> = a<sup>2</sup>+b<sup>2</sup>+c<sup>2</sup>+2ab+2bc+2ca</span>", note: "平方差看『同前同後、正負相反』；完全平方的中間項是兩數乘積的 2 倍。原講義第 14、15 項重複，已合併。", keywords: "平方差 完全平方 展開 因式分解" },
+      { id: "16", no: "16", category: "代數", title: "除法關係式", formula: "<span class='line'>被除式 = 除式×商 + 餘數</span><span class='line'>A = BQ + R，且 0 ≤ R &lt; |B|</span>", note: "記住『被 = 除×商 + 餘』，便可移項求任一未知量。", keywords: "被除式 除式 商 餘數" },
+      { id: "17", no: "17", category: "平面幾何", title: "勾股定理", formula: "<span class='line'>直角三角形：c<sup>2</sup> = a<sup>2</sup>+b<sup>2</sup></span><span class='line'>c = √(a<sup>2</sup>+b<sup>2</sup>)</span>", note: "c 必須是直角所對的斜邊。反過來若三邊滿足此式，也可判定為直角三角形。", keywords: "畢氏定理 直角三角形 斜邊", diagram: "right-triangle" },
+      { id: "18", no: "18", category: "平面幾何", title: "直角三角形斜邊上的高", formula: "<span class='line'>½ab = ½ch</span><span class='line'>h = ab/c = ab/√(a<sup>2</sup>+b<sup>2</sup>)</span>", note: "同一個三角形用『兩股』或『斜邊與斜邊高』算面積，兩式相等。", keywords: "斜邊高 面積 兩股", diagram: "altitude" },
+      { id: "19", no: "19", category: "平面幾何", title: "常見勾股數", formula: "<span class='line'>3:4:5　5:12:13　7:24:25</span><span class='line'>8:15:17　9:40:41　20:21:29</span><span class='line'>一般式：m<sup>2</sup>−n<sup>2</sup>，2mn，m<sup>2</sup>+n<sup>2</sup></span>", note: "三邊同乘正數 k 仍是勾股數組。講義一般式中間項排版不清，本頁採標準 2mn。", keywords: "勾股組 畢氏 345 51213", diagram: "right-triangle" },
+      { id: "20", no: "20", category: "坐標與函數", title: "點到原點與兩點中點", formula: "<span class='line'>O(0,0)、A(x,y)</span><span class='line'>AO = √(x<sup>2</sup>+y<sup>2</sup>)</span><span class='line'>M((x<sub>1</sub>+x<sub>2</sub>)/2, (y<sub>1</sub>+y<sub>2</sub>)/2)</span>", note: "點到原點的距離就是把 x、y 當作直角三角形的兩股。", keywords: "原點 距離 中點 坐標", diagram: "coordinate" },
+      { id: "21", no: "21", category: "平面幾何", title: "正三角形的高與面積", formula: "<span class='line'>高 h = (√3/2)a</span><span class='line'>面積 = (√3/4)a<sup>2</sup></span>", note: "作高後會分成兩個 30°−60°−90° 三角形。", keywords: "等邊三角形 正三角形 高 面積", diagram: "equilateral" },
+      { id: "22", no: "22", category: "立體幾何", title: "長方體空間對角線", formula: "<span class='line'>d = √(a<sup>2</sup>+b<sup>2</sup>+c<sup>2</sup>)</span>", note: "先在底面使用一次勾股，再和高一起使用第二次勾股。", keywords: "長方體 對角線 長寬高", diagram: "prism3d" },
+      { id: "23", no: "23", category: "立體幾何", title: "正方體空間對角線", formula: "<span class='line'>d = √3·a</span>", note: "正方體長、寬、高皆為 a，代入長方體空間對角線公式即可。", keywords: "正方體 立方體 對角線", diagram: "cube" },
+      { id: "24", no: "24", category: "代數", title: "一元二次方程式", formula: "<span class='line'>ax<sup>2</sup>+bx+c=0，a≠0</span><span class='line'>x = (−b±√(b<sup>2</sup>−4ac))/(2a)</span><span class='line'>兩根和 = −b/a；兩根積 = c/a</span>", note: "可用因式分解、配方法或公式法。判別式 Δ=b²−4ac 決定實根個數。", keywords: "二次方程式 公式解 判別式 根與係數" },
+      { id: "25", no: "25", category: "數列", title: "等差數列與級數", formula: "<span class='line'>a<sub>n</sub> = a<sub>1</sub>+(n−1)d</span><span class='line'>S<sub>n</sub> = n(a<sub>1</sub>+a<sub>n</sub>)/2</span><span class='line'>= n[2a<sub>1</sub>+(n−1)d]/2</span>", note: "公差 d = 後項−前項；若 a,b,c 成等差，則 2b=a+c。", keywords: "等差數列 公差 一般項 等差級數 和" },
+      { id: "26", no: "26", category: "平面幾何", title: "連續平分作圖", formula: "<span class='line'>分成 2<sup>n</sup> 等分：共作 2<sup>n</sup>−1 次平分</span><span class='line'>若 a+b=2<sup>n</sup>，作 n 次可定位 a:b</span>", note: "線段使用垂直平分線；角度使用角平分線。", keywords: "尺規作圖 平分線 垂直平分 角平分", diagram: "construction" },
+      { id: "27", no: "27", category: "立體幾何", title: "角柱", formula: "<span class='line'>表面積 = 2×底面積 + 底面周長×柱高</span><span class='line'>體積 = 底面積×柱高</span><span class='line'>正 n 角柱：2n 頂點、3n 邊、n+2 面</span>", note: "側面積就是底面周長乘柱高。", keywords: "角柱 稜柱 表面積 體積 頂點 邊 面", diagram: "prism3d" },
+      { id: "28", no: "28", category: "立體幾何", title: "圓柱", formula: "<span class='line'>側面積 = 2πrh</span><span class='line'>表面積 = 2πrh+2πr<sup>2</sup></span><span class='line'>體積 = πr<sup>2</sup>h</span>", note: "側面展開是長方形，長為底圓周長 2πr，寬為柱高 h。", keywords: "圓柱 側面積 表面積 體積 展開圖", diagram: "cylinder" },
+      { id: "29", no: "29", category: "立體幾何", title: "錐體與圓錐", formula: "<span class='line'>錐體體積 = ⅓×底面積×高</span><span class='line'>圓錐側面積 = πRr</span><span class='line'>圓錐表面積 = πRr+πr<sup>2</sup></span>", note: "R 是母線長、r 是底圓半徑。側面扇形弧長等於底圓周長。", keywords: "角錐 圓錐 扇形 母線 體積 表面積", diagram: "cone" },
+      { id: "30", no: "30", category: "平面幾何", title: "三角形內角與外角", formula: "<span class='line'>內角和 = 180°</span><span class='line'>外角和 = 360°</span><span class='line'>一個外角 = 兩個內對角和</span>", note: "外角定理中的兩個角是不相鄰的內角。", keywords: "三角形 內角和 外角和 外角定理", diagram: "triangle-angles" },
+      { id: "31", no: "31", category: "平面幾何", title: "三角形角度追蹤", formula: "<span class='line'>角平分線交點：∠BDC = 90°+½∠A</span><span class='line'>折線外角：外角可逐步拆成遠端內角和</span>", note: "看到多個三角形時，先標出 180°，再利用對頂角、外角或角平分線。", keywords: "角平分線 角度追蹤 蝴蝶結 五角星", diagram: "triangle-angles" },
+      { id: "32", no: "32", category: "平面幾何", title: "多邊形內角、外角與對角線", formula: "<span class='line'>內角和 = (n−2)×180°</span><span class='line'>外角和 = 360°</span><span class='line'>對角線總數 = n(n−3)/2</span>", note: "從一個頂點可畫 n−3 條對角線，分成 n−2 個三角形。", keywords: "多邊形 n邊形 內角和 外角和 對角線", diagram: "polygon" },
+      { id: "33", no: "33", category: "平面幾何", title: "正多邊形角度", formula: "<span class='line'>每一內角 = (n−2)×180°/n</span><span class='line'>= 180°−360°/n</span><span class='line'>每一外角 = 360°/n</span>", note: "正多邊形每邊相等、每角也相等。內角與相鄰外角互補。", keywords: "正多邊形 內角 外角", diagram: "polygon" },
+      { id: "34", no: "34", category: "平面幾何", title: "特殊直角三角形", formula: "<span class='line'>30°−60°−90°：邊長比 1:√3:2</span><span class='line'>45°−45°−90°：邊長比 1:1:√2</span>", note: "邊長順序要對應角度由小到大；最大邊一定是斜邊。", keywords: "30 60 90 45 等腰直角 邊長比", diagram: "special-triangles" },
+      { id: "35", no: "35", category: "平面幾何", title: "平行線截角", formula: "<span class='line'>同位角相等、內錯角相等</span><span class='line'>同側內角互補</span><span class='line'>兩角兩邊分別平行或垂直 → 相等或互補</span>", note: "遇到折線可過頂點作輔助平行線，把角拆成同位角或內錯角。", keywords: "平行線 同位角 內錯角 同側內角 截角", diagram: "parallel-lines" },
+      { id: "36", no: "36", category: "平面幾何", title: "梯形中線", formula: "<span class='line'>兩腰中點連線 = (上底+下底)/2</span><span class='line'>兩對角線中點連線 = |下底−上底|/2</span>", note: "兩條中點連線都平行於上、下底，但一條取『和』、一條取『差』。", keywords: "梯形 中線 對角線 中點 上底 下底", diagram: "trapezoid" },
+      { id: "37", no: "37", category: "平面幾何", title: "四邊形中點連線", formula: "<span class='line'>任意四邊形四邊中點連成平行四邊形</span><span class='line'>新周長 = 原兩條對角線長之和</span><span class='line'>新面積 = 原面積/2</span>", note: "這是瓦里尼翁定理；新四邊形的邊分別平行於原四邊形的兩條對角線。", keywords: "中點四邊形 平行四邊形 周長 面積", diagram: "quadrilateral-midpoints" },
+      { id: "38", no: "38", category: "平面幾何", title: "三角形平行截線比例", formula: "<span class='line'>DE ∥ BC → △ADE ∼ △ABC</span><span class='line'>AD/AB = AE/AC = DE/BC</span><span class='line'>AD/DB = AE/EC</span>", note: "先確認平行線，再按對應頂點順序寫相似三角形。", keywords: "相似 比例線段 平行 截線", diagram: "similarity" },
+      { id: "39", no: "39", category: "平面幾何", title: "直角三角形斜邊高相似", formula: "<span class='line'>AD⊥BC → △ABD ∼ △ACD ∼ △ABC</span><span class='line'>AD<sup>2</sup>=BD·CD</span><span class='line'>AB<sup>2</sup>=BD·BC；AC<sup>2</sup>=CD·BC</span>", note: "三個三角形互相相似；斜邊高是兩段投影的幾何平均。", keywords: "子母相似 斜邊高 射影定理 幾何平均", diagram: "right-similarity" },
+      { id: "40", no: "40", category: "平面幾何", title: "角平分線分邊比例", formula: "<span class='line'>AD 平分 ∠BAC</span><span class='line'>AB:AC = BD:DC</span>", note: "內角平分線與外角平分線都能建立相鄰兩邊與對邊分段的比例。", keywords: "內分比 外分比 角平分線定理", diagram: "angle-bisector" },
+      { id: "41", no: "41", category: "平面幾何", title: "三角形中點連線", formula: "<span class='line'>D、E 為兩邊中點 → DE ∥ BC</span><span class='line'>DE = BC/2</span><span class='line'>△DEF 面積 = △ABC 面積/4</span>", note: "三中點連成的中間三角形，周長是原來一半，面積是原來四分之一。", keywords: "三角形 中位線 中點 面積", diagram: "similarity" },
+      { id: "42", no: "42", category: "平面幾何", title: "任意四邊形中點圖形", formula: "<span class='line'>四邊中點連線必為平行四邊形</span><span class='line'>周長 = AC+BD；面積 = 原面積/2</span>", note: "原對角線等長 → 新圖形為菱形；原對角線垂直 → 新圖形為長方形；兩者兼具 → 正方形。", keywords: "四邊形 中點 菱形 長方形 正方形", diagram: "quadrilateral-midpoints" },
+      { id: "43", no: "43", category: "平面幾何", title: "圓外一點的切線長", formula: "<span class='line'>PA、PB 為同一外點 P 的切線</span><span class='line'>PA = PB</span><span class='line'>OP 垂直平分 AB</span>", note: "半徑垂直切線，可由 RHS 證明兩個直角三角形全等。", keywords: "切線長 圓 外點 半徑 垂直", diagram: "circle-tangents" },
+      { id: "44", no: "44", category: "平面幾何", title: "兩圓公切線長", formula: "<span class='line'>外公切線 = √[d<sup>2</sup>−(R−r)<sup>2</sup>]</span><span class='line'>內公切線 = √[d<sup>2</sup>−(R+r)<sup>2</sup>]</span>", note: "d 是兩圓心距。外公切線用半徑差，內公切線用半徑和。", keywords: "外公切線 內公切線 兩圓 圓心距", diagram: "two-circles" },
+      { id: "45", no: "45", category: "平面幾何", title: "圓的五種角", formula: "<span class='line'>圓心角 = 所對弧</span><span class='line'>圓周角、弦切角 = 所對弧/2</span><span class='line'>圓內角 = 兩弧和/2</span><span class='line'>圓外角 = 大弧小弧差/2</span>", note: "先看角的頂點在圓心、圓周、圓內或圓外，再決定使用哪一種關係。", keywords: "圓心角 圓周角 圓內角 弦切角 圓外角 弧", diagram: "circle-angles" },
+      { id: "46", no: "46", category: "平面幾何", title: "圓內接四邊形", formula: "<span class='line'>∠A+∠C = 180°</span><span class='line'>∠B+∠D = 180°</span><span class='line'>任一外角 = 內對角</span>", note: "四個頂點都在同一圓上時，兩組對角互補。反向判定也常出題。", keywords: "共圓 內接四邊形 對角互補 外角", diagram: "cyclic" },
+      { id: "47", no: "47", category: "平面幾何", title: "圓的線段乘冪", formula: "<span class='line'>圓內兩弦：AE·BE = CE·DE</span><span class='line'>切割線：PA<sup>2</sup> = PB·PC</span><span class='line'>圓外兩割線：PA·PB = PC·PD</span>", note: "從同一點出發，『外段×全段』保持相等；切線可看成兩段長都等於 PA。", keywords: "圓內幂 切割線 圓外幂 線段乘積", diagram: "power-point" },
+      { id: "48", no: "48", category: "平面幾何", title: "三角形外心與圓心角", formula: "<span class='line'>∠A&lt;90°：∠BOC = 2∠A</span><span class='line'>∠A&gt;90°：較小的 ∠BOC = 360°−2∠A</span>", note: "同弧所對的圓心角是圓周角的 2 倍；鈍角時要留意取的是優弧或劣弧。", keywords: "外心 外接圓 圓心角 圓周角", diagram: "triangle-centers" },
+      { id: "49", no: "49", category: "平面幾何", title: "三角形內心", formula: "<span class='line'>∠BIC = 90°+½∠A</span><span class='line'>直角三角形：r = (a+b−c)/2</span><span class='line'>三角形面積 = rs（s 為半周長）</span>", note: "內心是三條角平分線交點，到三邊距離相等。", keywords: "內心 內切圓 半徑 半周長 面積", diagram: "triangle-centers" },
+      { id: "50", no: "50", category: "平面幾何", title: "特殊三角形的三心", formula: "<span class='line'>直角三角形：外心在斜邊中點，R=c/2</span><span class='line'>正三角形：外心=內心=重心</span><span class='line'>正三角形 R=√3a/3，r=√3a/6</span>", note: "重心把中線分成 2:1，靠頂點的一段較長。", keywords: "外心 內心 重心 三心 直角三角形 正三角形", diagram: "triangle-centers" },
+      { id: "51", no: "51", category: "坐標與函數", title: "拋物線與 x 軸交點", formula: "<span class='line'>Δ = b<sup>2</sup>−4ac</span><span class='line'>Δ&gt;0：兩交點　Δ=0：相切一點</span><span class='line'>Δ&lt;0：沒有實數交點</span><span class='line'>x = (−b±√Δ)/(2a)</span>", note: "與 x 軸交點就是令 y=0，轉成一元二次方程式。", keywords: "二次函數 拋物線 判別式 x軸 交點", diagram: "parabola" },
+      { id: "52", no: "52", category: "坐標與函數", title: "二次函數的三種表示", formula: "<span class='line'>一般式：y=ax<sup>2</sup>+bx+c</span><span class='line'>兩根式：y=a(x−α)(x−β)</span><span class='line'>頂點式：y=a(x−h)<sup>2</sup>+k</span>", note: "已知三點用一般式；已知兩個 x 截距用兩根式；已知頂點用頂點式，再代另一點求 a。", keywords: "二次函數 一般式 因式分解式 頂點式", diagram: "parabola" },
+      { id: "53", no: "53", category: "統計與機率", title: "相對次數與累積次數", formula: "<span class='line'>相對次數(%) = 各組次數/總次數×100%</span><span class='line'>相對累積次數(%) = 累積次數/總次數×100%</span>", note: "相對次數折線標在組中點；相對累積次數折線標在組上限。", keywords: "統計 次數分配 相對次數 累積次數 百分比", diagram: "histogram" },
+      { id: "54", no: "54", category: "統計與機率", title: "中位數", formula: "<span class='line'>資料先由小到大排列</span><span class='line'>n 為奇數：第 (n+1)/2 個</span><span class='line'>n 為偶數：第 n/2 與 n/2+1 個的平均</span>", note: "中位數看的是排列後的位置，不是資料出現次數最多者。", keywords: "統計 中央值 中位數 奇數 偶數" },
+      { id: "55", no: "55", category: "統計與機率", title: "單一事件機率", formula: "<span class='line'>P(A) = A 事件結果數/所有可能結果數</span><span class='line'>0 ≤ P(A) ≤ 1</span>", note: "只有在每個基本結果等可能時，才能直接用『有利結果數 ÷ 全部結果數』。", keywords: "機率 樣本空間 事件 可能性" },
+      { id: "56", no: "56", category: "統計與機率", title: "母群體估計（捉放法）", formula: "<span class='line'>標記物總數/母群體總數</span><span class='line'>≈ 抽中標記物數/抽樣總數</span>", note: "交叉相乘可估計母群體數量；前提是充分混合，且標記不易脫落。", keywords: "抽樣 母體 估計 標記 重捕法 捉放法" }
+    ];
+
+    const diagramTemplates = {
+      "numberline": `<svg viewBox="0 0 320 150" aria-label="數線中點示意圖"><path class="solid" d="M28 85H292M48 76v18M160 76v18M272 76v18"/><path class="shape" d="M48 85H272"/><circle cx="48" cy="85" r="7" fill="var(--card-color)"/><circle cx="160" cy="85" r="7" fill="var(--card-color)"/><circle cx="272" cy="85" r="7" fill="var(--card-color)"/><text class="label" x="42" y="65">A(a)</text><text class="label" x="145" y="116">M</text><text class="label" x="258" y="65">B(b)</text></svg>`,
+      "coordinate": `<svg viewBox="0 0 320 170" aria-label="坐標平面兩點距離示意圖"><path class="solid" d="M34 139H295M61 155V16"/><path class="guide" d="M95 121V52H250M95 121H250V52"/><path class="shape" d="M95 121 250 52"/><circle cx="95" cy="121" r="6" fill="var(--card-color)"/><circle cx="250" cy="52" r="6" fill="var(--card-color)"/><text class="label" x="72" y="143">P</text><text class="label" x="258" y="49">Q</text><text class="label" x="279" y="158">x</text><text class="label" x="45" y="25">y</text></svg>`,
+      "line": `<svg viewBox="0 0 320 170" aria-label="直線與截距示意圖"><path class="solid" d="M35 139H294M62 155V16"/><path class="shape" d="M62 118 260 40"/><circle cx="62" cy="118" r="6" fill="var(--card-color)"/><circle cx="260" cy="40" r="6" fill="var(--card-color)"/><text class="label" x="69" y="115">(0,b)</text><text class="label" x="232" y="65">(a,0)</text></svg>`,
+      "polygon": `<svg viewBox="0 0 320 170" aria-label="多邊形與對角線示意圖"><polygon class="shape" points="160,19 262,76 226,148 92,148 55,76"/><path class="guide" d="M160 19 226 148 55 76 262 76 92 148Z"/><text class="label" x="151" y="15">A</text><text class="label" x="269" y="78">B</text><text class="label" x="228" y="165">C</text><text class="label" x="78" y="165">D</text><text class="label" x="38" y="78">E</text></svg>`,
+      "segment": `<svg viewBox="0 0 320 150" aria-label="線段內分點示意圖"><path class="shape" d="M48 86H275"/><circle cx="48" cy="86" r="7" fill="var(--card-color)"/><circle cx="195" cy="86" r="7" fill="var(--card-color)"/><circle cx="275" cy="86" r="7" fill="var(--card-color)"/><text class="label" x="40" y="65">A</text><text class="label" x="187" y="65">P</text><text class="label" x="268" y="65">B</text><text class="label" x="112" y="114">m</text><text class="label" x="232" y="114">n</text></svg>`,
+      "right-triangle": `<svg viewBox="0 0 320 170" aria-label="直角三角形示意圖"><path class="shape" d="M62 141H262L62 32Z"/><path class="solid" d="M62 121h20v20"/><text class="label" x="152" y="160">a</text><text class="label" x="37" y="91">b</text><text class="label" x="168" y="78">c</text></svg>`,
+      "altitude": `<svg viewBox="0 0 320 170" aria-label="斜邊高示意圖"><path class="shape" d="M52 143 262 143 115 28Z"/><path class="guide" d="M115 28 178 143"/><path class="solid" d="m169 143 3-12 12 3"/><text class="label" x="178" y="88">h</text><text class="label" x="74" y="81">a</text><text class="label" x="201" y="80">b</text><text class="label" x="153" y="162">c</text></svg>`,
+      "equilateral": `<svg viewBox="0 0 320 170" aria-label="正三角形高示意圖"><path class="shape" d="M160 22 56 145H264Z"/><path class="guide" d="M160 22V145"/><path class="solid" d="M160 128h17v17"/><text class="label" x="172" y="87">h</text><text class="label" x="103" y="92">a</text><text class="label" x="205" y="92">a</text><text class="label" x="154" y="164">a</text></svg>`,
+      "prism3d": `<svg viewBox="0 0 320 180" aria-label="長方體空間對角線示意圖"><path class="shape" d="M62 67h153v87H62Z"/><path class="solid" d="m62 67 48-38h153v88l-48 37M215 67l48-38M263 117l-48 37"/><path class="guide" d="M62 154 263 29"/><text class="label" x="134" y="173">a</text><text class="label" x="39" y="117">c</text><text class="label" x="245" y="145">b</text><text class="label" x="171" y="82">d</text></svg>`,
+      "cube": `<svg viewBox="0 0 320 180" aria-label="正方體空間對角線示意圖"><path class="shape" d="M72 67h140v88H72Z"/><path class="solid" d="m72 67 47-37h140v88l-47 37M212 67l47-37M259 118l-47 37"/><path class="guide" d="M72 155 259 30"/><text class="label" x="136" y="174">a</text><text class="label" x="48" y="117">a</text><text class="label" x="245" y="143">a</text></svg>`,
+      "construction": `<svg viewBox="0 0 320 170" aria-label="線段連續平分示意圖"><path class="shape" d="M34 91H286"/><path class="solid" d="M34 82v18M97 82v18M160 82v18M223 82v18M286 82v18"/><path class="guide" d="M97 90a63 63 0 0 1 126 0M34 90a126 126 0 0 1 252 0"/><text class="label" x="136" y="132">2ⁿ 等分</text></svg>`,
+      "cylinder": `<svg viewBox="0 0 320 180" aria-label="圓柱示意圖"><ellipse class="shape" cx="160" cy="39" rx="75" ry="24"/><path class="shape" d="M85 39v101c0 32 150 32 150 0V39"/><ellipse class="solid" cx="160" cy="140" rx="75" ry="24"/><path class="guide" d="M160 39v101"/><text class="label" x="169" y="94">h</text><text class="label" x="188" y="35">r</text></svg>`,
+      "cone": `<svg viewBox="0 0 320 180" aria-label="圓錐示意圖"><ellipse class="shape" cx="160" cy="143" rx="82" ry="24"/><path class="shape" d="M78 143 160 21l82 122"/><path class="guide" d="M160 21v122M160 143h82"/><text class="label" x="169" y="93">h</text><text class="label" x="198" y="137">r</text><text class="label" x="206" y="78">R</text></svg>`,
+      "triangle-angles": `<svg viewBox="0 0 320 170" aria-label="三角形內外角示意圖"><path class="shape" d="M60 142 162 28 259 142Z"/><path class="solid" d="M259 142h49"/><path class="guide" d="M245 142a25 25 0 0 1 19-24"/><text class="label" x="153" y="58">A</text><text class="label" x="75" y="136">B</text><text class="label" x="235" y="136">C</text><text class="label" x="268" y="118">外角</text></svg>`,
+      "special-triangles": `<svg viewBox="0 0 320 170" aria-label="特殊直角三角形示意圖"><path class="shape" d="M27 143h122V39Z"/><path class="solid" d="M27 125h18v18"/><text class="label" x="50" y="136">60°</text><text class="label" x="117" y="61">30°</text><text class="label" x="82" y="162">√3</text><text class="label" x="11" y="91">1</text><text class="label" x="91" y="84">2</text><path class="shape" d="M183 143h110L183 33Z"/><path class="solid" d="M183 125h18v18"/><text class="label" x="203" y="136">45°</text><text class="label" x="260" y="61">45°</text><text class="label" x="226" y="162">1</text><text class="label" x="166" y="92">1</text><text class="label" x="229" y="83">√2</text></svg>`,
+      "parallel-lines": `<svg viewBox="0 0 320 170" aria-label="平行線截角示意圖"><path class="shape" d="M35 48H286M35 126H286"/><path class="solid" d="M112 13 211 158"/><path class="guide" d="M113 48a25 25 0 0 1 20-23M184 126a25 25 0 0 1 21-23"/><text class="label" x="76" y="41">∠1</text><text class="label" x="210" y="119">∠2</text><text class="label" x="291" y="52">L</text><text class="label" x="291" y="130">M</text></svg>`,
+      "trapezoid": `<svg viewBox="0 0 320 170" aria-label="梯形中線示意圖"><path class="shape" d="M96 29h126l59 116H42Z"/><path class="solid" d="M69 87h181"/><circle cx="69" cy="87" r="5" fill="var(--card-color)"/><circle cx="250" cy="87" r="5" fill="var(--card-color)"/><text class="label" x="151" y="23">a</text><text class="label" x="153" y="164">b</text><text class="label" x="145" y="80">(a+b)/2</text></svg>`,
+      "quadrilateral-midpoints": `<svg viewBox="0 0 320 180" aria-label="四邊形中點連線示意圖"><path class="shape" d="M68 42 263 25 243 151 43 138Z"/><path class="guide" d="M68 42 243 151M263 25 43 138"/><path class="solid" d="M166 34 253 88 143 145 56 90Z"/><circle cx="166" cy="34" r="5" fill="var(--card-color)"/><circle cx="253" cy="88" r="5" fill="var(--card-color)"/><circle cx="143" cy="145" r="5" fill="var(--card-color)"/><circle cx="56" cy="90" r="5" fill="var(--card-color)"/></svg>`,
+      "similarity": `<svg viewBox="0 0 320 180" aria-label="三角形平行截線示意圖"><path class="shape" d="M160 20 43 154H278Z"/><path class="solid" d="M98 91h124"/><text class="label" x="153" y="18">A</text><text class="label" x="31" y="169">B</text><text class="label" x="282" y="169">C</text><text class="label" x="82" y="88">D</text><text class="label" x="227" y="88">E</text><text class="label" x="133" y="116">DE ∥ BC</text></svg>`,
+      "right-similarity": `<svg viewBox="0 0 320 180" aria-label="直角三角形斜邊高相似示意圖"><path class="shape" d="M47 145 277 145 113 28Z"/><path class="guide" d="M113 28 168 145"/><path class="solid" d="m159 145 3-12 12 3M98 38l12 17 17-12"/><text class="label" x="104" y="22">A</text><text class="label" x="32" y="161">B</text><text class="label" x="282" y="161">C</text><text class="label" x="163" y="165">D</text></svg>`,
+      "angle-bisector": `<svg viewBox="0 0 320 180" aria-label="三角形角平分線示意圖"><path class="shape" d="M160 22 42 150H280Z"/><path class="solid" d="M160 22 185 150"/><path class="guide" d="M151 47a29 29 0 0 1 17 1M168 48a29 29 0 0 1 11 15"/><text class="label" x="152" y="18">A</text><text class="label" x="29" y="167">B</text><text class="label" x="284" y="167">C</text><text class="label" x="181" y="168">D</text></svg>`,
+      "circle-tangents": `<svg viewBox="0 0 320 180" aria-label="圓外點兩切線示意圖"><circle class="shape" cx="126" cy="91" r="66"/><path class="solid" d="M126 91 257 91M257 91 151 30M257 91 151 152"/><path class="guide" d="M151 30 151 152"/><text class="label" x="115" y="96">O</text><text class="label" x="260" y="96">P</text><text class="label" x="145" y="23">A</text><text class="label" x="145" y="171">B</text></svg>`,
+      "two-circles": `<svg viewBox="0 0 320 180" aria-label="兩圓公切線示意圖"><circle class="shape" cx="91" cy="107" r="54"/><circle class="shape" cx="241" cy="122" r="35"/><path class="solid" d="M65 59 226 90M91 107 241 122"/><path class="guide" d="M91 107 65 59M241 122 226 90"/><text class="label" x="80" y="112">O₁</text><text class="label" x="231" y="127">O₂</text><text class="label" x="154" y="139">d</text></svg>`,
+      "circle-angles": `<svg viewBox="0 0 320 180" aria-label="圓周角示意圖"><circle class="shape" cx="160" cy="92" r="72"/><path class="solid" d="M102 49 218 49 160 164Z"/><path class="guide" d="M160 92 102 49M160 92 218 49"/><text class="label" x="151" y="97">O</text><text class="label" x="92" y="43">A</text><text class="label" x="222" y="43">B</text><text class="label" x="154" y="178">C</text></svg>`,
+      "cyclic": `<svg viewBox="0 0 320 180" aria-label="圓內接四邊形示意圖"><circle class="shape" cx="160" cy="91" r="72"/><path class="solid" d="M115 35 222 59 203 143 90 119Z"/><text class="label" x="106" y="29">A</text><text class="label" x="226" y="58">B</text><text class="label" x="206" y="158">C</text><text class="label" x="75" y="124">D</text></svg>`,
+      "power-point": `<svg viewBox="0 0 320 180" aria-label="圓外割線乘冪示意圖"><circle class="shape" cx="133" cy="92" r="67"/><path class="solid" d="M286 52 198 68 69 92M286 52 181 132 92 143"/><circle cx="286" cy="52" r="6" fill="var(--card-color)"/><text class="label" x="290" y="49">P</text><text class="label" x="192" y="61">A</text><text class="label" x="62" y="87">B</text><text class="label" x="176" y="149">C</text><text class="label" x="80" y="159">D</text></svg>`,
+      "triangle-centers": `<svg viewBox="0 0 320 180" aria-label="三角形三心示意圖"><path class="shape" d="M160 20 47 151H279Z"/><path class="guide" d="M160 20 163 151M47 151 220 85M279 151 104 85"/><circle cx="162" cy="102" r="8" fill="var(--card-color)"/><circle class="solid" cx="162" cy="102" r="36"/><text class="label" x="174" y="101">I / O / G</text></svg>`,
+      "parabola": `<svg viewBox="0 0 320 180" aria-label="拋物線與 x 軸交點示意圖"><path class="solid" d="M31 128H295M160 163V17"/><path class="shape" d="M64 36c35 0 39 98 96 98s61-98 96-98"/><circle cx="118" cy="128" r="6" fill="var(--card-color)"/><circle cx="202" cy="128" r="6" fill="var(--card-color)"/><text class="label" x="103" y="151">α</text><text class="label" x="205" y="151">β</text></svg>`,
+      "histogram": `<svg viewBox="0 0 320 180" aria-label="相對次數分配圖示意圖"><path class="solid" d="M39 146H292M53 157V23"/><path class="shape" d="M70 146V105h43v41M113 146V69h43v77M156 146V42h43v104M199 146V87h43v59M242 146v-25h35v25"/><path class="solid" d="m91 102 43-37 43-27 43 45 39 34"/></svg>`
+    };
+
+    const storageKeys = {
+      custom: "examMathCustomFormulasV1",
+      favorites: "examMathFavoritesV1"
+    };
+
+    let customFormulas = loadJSON(storageKeys.custom, []);
+    let favorites = new Set(loadJSON(storageKeys.favorites, []));
+    let activeCategory = "全部";
+    let favoritesOnly = false;
+    let searchText = "";
+    let toastTimer;
+
+    const grid = document.getElementById("formulaGrid");
+    const searchInput = document.getElementById("searchInput");
+    const categoryChips = document.getElementById("categoryChips");
+    const resultCount = document.getElementById("resultCount");
+    const activeFilterText = document.getElementById("activeFilterText");
+    const favoriteFilter = document.getElementById("favoriteFilter");
+    const dialog = document.getElementById("addDialog");
+    const form = document.getElementById("formulaForm");
+    const inboxSummary = document.getElementById("inboxSummary");
+    const toast = document.getElementById("toast");
+
+    function loadJSON(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function saveJSON(key, value) {
+      try { localStorage.setItem(key, JSON.stringify(value)); }
+      catch (error) { showToast("瀏覽器目前無法儲存資料"); }
+    }
+
+    function escapeHTML(value = "") {
+      return String(value).replace(/[&<>'"]/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+      })[char]);
+    }
+
+    function formulaPlainText(item) {
+      const temp = document.createElement("div");
+      temp.innerHTML = item.isCustom ? escapeHTML(item.formula) : item.formula;
+      return `${item.title} ${item.category} ${temp.textContent} ${item.note || ""} ${item.keywords || ""}`.toLowerCase();
+    }
+
+    function renderChips() {
+      const counts = formulas.concat(customFormulas).reduce((map, item) => {
+        map[item.category] = (map[item.category] || 0) + 1;
+        return map;
+      }, {});
+      const chips = ["全部", ...Object.keys(categoryMeta)];
+      categoryChips.innerHTML = chips.map(category => {
+        const count = category === "全部" ? formulas.length + customFormulas.length : (counts[category] || 0);
+        return `<button class="chip ${activeCategory === category ? "is-active" : ""}" type="button" data-category="${category}" aria-pressed="${activeCategory === category}">${category} ${count}</button>`;
+      }).join("");
+    }
+
+    function getVisibleFormulas() {
+      const query = searchText.trim().toLowerCase();
+      return formulas.concat(customFormulas.map(item => ({ ...item, isCustom: true }))).filter(item => {
+        const categoryMatch = activeCategory === "全部" || item.category === activeCategory;
+        const favoriteMatch = !favoritesOnly || favorites.has(item.id);
+        const searchMatch = !query || formulaPlainText(item).includes(query);
+        return categoryMatch && favoriteMatch && searchMatch;
+      });
+    }
+
+    function cardHTML(item) {
+      const meta = categoryMeta[item.category] || categoryMeta["代數"];
+      const isFavorite = favorites.has(item.id);
+      const formulaHTML = item.isCustom
+        ? escapeHTML(item.formula).replace(/\n/g, "<br>")
+        : item.formula;
+      const noteHTML = escapeHTML(item.note || "尚未加入補充說明。");
+      const diagram = item.diagram && diagramTemplates[item.diagram]
+        ? `<div class="diagram-box">${diagramTemplates[item.diagram]}</div>`
+        : "";
+      return `
+        <article class="formula-card" style="--card-color:${meta.color};--card-soft:${meta.soft}" data-id="${escapeHTML(item.id)}">
+          <div class="card-head">
+            <div class="card-number">${escapeHTML(item.no)}</div>
+            <div class="card-title">
+              <span class="category-tag">${meta.icon} ${escapeHTML(item.category)}</span>
+              ${item.isCustom ? '<span class="pending-badge">● 待歸檔</span>' : ""}
+              <h3>${escapeHTML(item.title)}</h3>
+            </div>
+            <button class="favorite-button ${isFavorite ? "is-favorite" : ""}" type="button" data-action="favorite" aria-label="${isFavorite ? "取消收藏" : "加入收藏"}" aria-pressed="${isFavorite}">${isFavorite ? "★" : "☆"}</button>
+          </div>
+          <div class="formula-box">${formulaHTML}</div>
+          ${diagram}
+          <p class="card-note"><strong>記憶提示：</strong>${noteHTML}</p>
+          <div class="card-actions">
+            <span class="source-no">${item.isCustom ? "本機新增" : `講義第 ${escapeHTML(item.no)} 項`}</span>
+            <div>
+              <button class="tiny-button" type="button" data-action="copy">複製公式</button>
+              ${item.isCustom ? '<button class="tiny-button" type="button" data-action="delete">刪除</button>' : ""}
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function render() {
+      const visible = getVisibleFormulas();
+      renderChips();
+      resultCount.textContent = `${visible.length} 張`;
+      const filters = [activeCategory === "全部" ? "全部分類" : activeCategory];
+      if (favoritesOnly) filters.push("只看收藏");
+      if (searchText.trim()) filters.push(`搜尋「${searchText.trim()}」`);
+      activeFilterText.textContent = `${filters.join("・")}・依講義順序排列`;
+      grid.innerHTML = visible.length
+        ? visible.map(cardHTML).join("")
+        : `<div class="empty-state"><div class="emoji">🪐</div><h3>這個星球暫時沒有公式</h3><p>換個關鍵字或清除篩選條件再找找看。</p></div>`;
+      updateInbox();
+    }
+
+    function updateInbox() {
+      inboxSummary.textContent = customFormulas.length
+        ? `目前有 ${customFormulas.length} 張公式卡等待正式歸檔與發佈。`
+        : "目前沒有待歸檔公式。";
+      document.getElementById("exportCustom").disabled = customFormulas.length === 0;
+      document.getElementById("copyForChat").disabled = customFormulas.length === 0;
+    }
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add("is-visible");
+      toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2200);
+    }
+
+    async function copyText(text, successMessage) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(successMessage);
+      } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+        showToast(successMessage);
+      }
+    }
+
+    function itemById(id) {
+      return formulas.find(item => item.id === id) || customFormulas.find(item => item.id === id);
+    }
+
+    categoryChips.addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      render();
+    });
+
+    searchInput.addEventListener("input", event => {
+      searchText = event.target.value;
+      render();
+    });
+
+    favoriteFilter.addEventListener("click", () => {
+      favoritesOnly = !favoritesOnly;
+      favoriteFilter.classList.toggle("is-active", favoritesOnly);
+      favoriteFilter.setAttribute("aria-pressed", String(favoritesOnly));
+      favoriteFilter.textContent = favoritesOnly ? "★ 顯示全部" : "☆ 只看收藏";
+      render();
+    });
+
+    grid.addEventListener("click", event => {
+      const button = event.target.closest("[data-action]");
+      if (!button) return;
+      const card = button.closest(".formula-card");
+      const id = card.dataset.id;
+      const item = itemById(id);
+      if (!item) return;
+      if (button.dataset.action === "favorite") {
+        if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+        saveJSON(storageKeys.favorites, [...favorites]);
+        render();
+      }
+      if (button.dataset.action === "copy") {
+        const temp = document.createElement("div");
+        if (id.startsWith("custom-")) temp.textContent = item.formula;
+        else temp.innerHTML = item.formula;
+        copyText(`${item.title}\n${temp.textContent.trim()}`, "公式已複製");
+      }
+      if (button.dataset.action === "delete") {
+        if (!confirm(`確定刪除「${item.title}」這張本機公式卡嗎？`)) return;
+        customFormulas = customFormulas.filter(entry => entry.id !== id);
+        favorites.delete(id);
+        saveJSON(storageKeys.custom, customFormulas);
+        saveJSON(storageKeys.favorites, [...favorites]);
+        render();
+        showToast("本機公式卡已刪除");
+      }
+    });
+
+    document.getElementById("printButton").addEventListener("click", () => window.print());
+    document.getElementById("openAddDialog").addEventListener("click", () => dialog.showModal());
+    document.getElementById("closeAddDialog").addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", event => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const item = {
+        id: `custom-${Date.now()}`,
+        no: `＋${customFormulas.length + 1}`,
+        category: data.get("category"),
+        title: String(data.get("title")).trim(),
+        formula: String(data.get("formula")).trim(),
+        note: String(data.get("note")).trim(),
+        keywords: String(data.get("keywords")).trim(),
+        diagram: String(data.get("diagram")),
+        createdAt: new Date().toISOString()
+      };
+      customFormulas.push(item);
+      saveJSON(storageKeys.custom, customFormulas);
+      form.reset();
+      render();
+      dialog.close();
+      showToast("已加入待歸檔收件匣");
+      document.querySelector(`[data-id="${item.id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    document.getElementById("exportCustom").addEventListener("click", () => {
+      if (!customFormulas.length) return;
+      const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), formulas: customFormulas }, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `exam-math-new-formulas-${new Date().toISOString().slice(0, 10)}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
+      showToast("待歸檔公式已下載");
+    });
+
+    document.getElementById("copyForChat").addEventListener("click", () => {
+      if (!customFormulas.length) return;
+      const message = `請將以下新增公式正式歸檔到 Exam-Math/e-4.html，檢查公式正確性、更新版本紀錄，並立即發佈到 GitHub：\n\n${JSON.stringify(customFormulas, null, 2)}`;
+      copyText(message, "已複製，可貼到置頂對話");
+    });
+
+    const categorySelect = document.getElementById("newCategory");
+    categorySelect.innerHTML = Object.keys(categoryMeta).map(category => `<option value="${category}">${categoryMeta[category].icon} ${category}</option>`).join("");
+
+    render();
+  </script>
+</body>
+</html>
+
